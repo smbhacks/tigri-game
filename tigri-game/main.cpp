@@ -1,7 +1,8 @@
+#include <iostream>
 #include "SDL.h"
 #include "SDLW.h"
 #include "Game.h"
-#include <iostream>
+#include "GameplayScene.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,6 +15,7 @@ int main(int argc, char *argv[])
 	SDLW_Renderer renderer(window.getRawPtr(), -1, 0);
 
 	Game game(renderer);
+	game.changeScene(new GameplayScene());
 	while (game.isRunning())
 	{
 		game.handleEvents();

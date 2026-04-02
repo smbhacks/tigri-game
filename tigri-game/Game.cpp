@@ -25,3 +25,9 @@ void Game::render()
 	SDL_RenderClear(m_renderer.getRawPtr());
 	SDL_RenderPresent(m_renderer.getRawPtr());
 }
+
+void Game::changeScene(Scene* newScene)
+{
+	delete m_scene;
+	m_scene = newScene;
+}

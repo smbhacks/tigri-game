@@ -23,6 +23,7 @@ public:
 	void handleEvents();
 	void tick();
 	void render();
+	void changeScene(Scene* newScene);
 	bool isRunning() { return m_isRunning; }
 };
 
