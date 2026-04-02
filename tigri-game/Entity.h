@@ -5,22 +5,24 @@
 #include "SDLW.h"
 #include "Scene.h"
 
-class Entity : private Debuggable
+class Entity
 {
-private:
+protected:
+	float m_x = 0;
+	float m_y = 0;
+	float m_xSpeed = 0;
+	float m_ySpeed = 0;
+	float m_xAcceleration = 0;
+	float m_yAcceleration = 0;
 	CollisionBox m_collBox;
+	void m_applyPhysics();
 
 public:
-	float x = 0;
-	float y = 0;
-	float xSpeed = 0;
-	float ySpeed = 0;
-	float xAcceleration = 0;
-	float yAcceleration = 0;
 	Entity(Box collBox) 
-		: Debuggable("Entity")
-		, m_collBox(x, y, collBox)
+		: m_collBox(m_x, m_y, collBox)
 	{ }
-	void move();
+	virtual ~Entity() = default;
+	virtual void tick() = 0;
 	void drawCollBox(const SDLW_Renderer& renderer, const Camera& camera);
+	float howOffscreenX();
 };

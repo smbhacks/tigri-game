@@ -23,7 +23,7 @@ public:
 	{
 		m_printCalled("Copy constructor");
 	}
-	~Debuggable()
+	virtual ~Debuggable()
 	{
 		m_printCalled("Destructor");
 	}
