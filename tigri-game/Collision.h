@@ -37,4 +37,5 @@ public:
 		, m_box(box)
 	{ }
 	bool checkCollision(const CollisionBox& otherCollBox);
+	Box& getBox() { return m_box; }
 };

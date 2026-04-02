@@ -2,19 +2,22 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "Debuggable.h"
+#include "SDL.h"
+#include "SDLW.h"
 
 class GameplayScene : public Scene, private Debuggable
 {
 private:
-	Entity testentity;
+	Entity m_player;
+	Camera m_camera;
 
 public:
 	GameplayScene() 
 		: Debuggable("GameplayScene")
 		, Scene()
-		, testentity(Box(0, 0, 0, 0))
+		, m_player(Box(0, 0, 200, 100))
 	{ }
 	void tick() override;
-	void draw() override;
+	void draw(const SDLW_Renderer& renderer) override;
 };
 
