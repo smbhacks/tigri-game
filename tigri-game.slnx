@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="tigri-game/tigri-game.vcxproj" Id="7bcb9025-18b4-4d85-97e9-84afd0ec0c50" />
+</Solution>

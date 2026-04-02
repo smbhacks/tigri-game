@@ -39,3 +39,6 @@
 
 # debug information files
 *.dwo
+/.vs
+/tigri-game/x64/Debug
+/tigri-game/tigri-game.vcxproj.user
