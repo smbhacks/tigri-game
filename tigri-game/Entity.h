@@ -25,4 +25,6 @@ public:
 	virtual void tick() = 0;
 	void drawCollBox(const SDLW_Renderer& renderer, const Camera& camera);
 	float howOffscreenX();
+	CollisionBox& getCollBox() { return m_collBox; }
+	float getY() { return m_y; }
 };

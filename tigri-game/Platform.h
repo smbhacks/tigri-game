@@ -8,7 +8,8 @@ public:
 		: Entity(collBox)
 		, Debuggable("Platform")
 	{ 
-		m_x = 1280;
+		m_x = 200;
+		m_y = 600;
 	}
 	void tick() override;
 };

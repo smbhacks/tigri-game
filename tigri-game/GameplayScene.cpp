@@ -2,10 +2,9 @@
 
 void GameplayScene::tick()
 {
-	m_player.tick();
 	for (auto it = m_platforms.begin(); it != m_platforms.end();)
 	{
-       auto& platformPtr = *it;
+		auto& platformPtr = *it;
 
 		platformPtr->tick();
 		if (platformPtr->howOffscreenX() < -200.0f)
@@ -17,6 +16,7 @@ void GameplayScene::tick()
 			it++;
 		}
 	}
+	m_player.tick();
 }
 
 void GameplayScene::draw(const SDLW_Renderer& renderer)
