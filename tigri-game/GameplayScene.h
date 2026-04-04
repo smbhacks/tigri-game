@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include "Scene.h"
 #include "Entity.h"
 #include "Player.h"
@@ -7,7 +8,6 @@
 #include "SDL.h"
 #include "SDLW.h"
 #include "Platform.h"
-#include <memory>
 
 class GameplayScene : public Scene, private Debuggable
 {

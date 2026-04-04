@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Debuggable.h"
 #include "SDLW.h"
+#include "Controller.h"
 
 struct Camera : private Debuggable
 {

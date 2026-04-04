@@ -1,18 +1,23 @@
 #include "Game.h"
 #include "SDL.h"
 
+Controller Game::m_controller;
+
 void Game::handleEvents()
 {
 	SDL_Event event;
-	SDL_PollEvent(&event);
-	switch (event.type)
+	while (SDL_PollEvent(&event))
 	{
-	case SDL_QUIT:
-		m_isRunning = false;
-		break;
+		m_controller.handleInput(event);
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			m_isRunning = false;
+			break;
 
-	default:
-		break;
+		default:
+			break;
+		}
 	}
 }
 

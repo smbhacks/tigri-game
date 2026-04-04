@@ -7,9 +7,11 @@
 class Player : public Entity, private Debuggable
 {
 private:
-	void m_tickPhysics();
+	void m_handleControlling();
+	void m_handlePhysics();
 	void m_tickCollChecks();
 	std::vector<std::unique_ptr<Platform>>& m_platformsRef; // needed for coll checks
+	bool m_dashingDownwards = false;
 
 public:
 	Player(Box collBox, std::vector<std::unique_ptr<Platform>>& platformsRef)
