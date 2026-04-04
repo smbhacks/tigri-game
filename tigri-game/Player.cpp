@@ -14,7 +14,7 @@ void Player::m_tickCollChecks()
 		{
 			m_ySpeed = m_dashingDownwards ? -dashedBounceSpeed : -normalBounceSpeed;
 			m_dashingDownwards = false;
-			m_y = platform->getY() - m_collBox.getBox().height; // not perfect but good 'nuff
+			m_y = platform->getY() - m_collBox.getBox().height - ((m_y + m_collBox.getBox().height) - platform->getY());
 			break;
 		}
 	}
@@ -51,8 +51,9 @@ void Player::m_handleControlling()
 void Player::m_handlePhysics()
 {
 	const float maxSideSpeed = 6.5f;
+	const float gravity = 0.31f;
 	m_xSpeed = GameUtils::clamp(m_xSpeed, -maxSideSpeed, maxSideSpeed);
-	m_yAcceleration = 0.2f;
+	m_yAcceleration = gravity;
 	m_applyPhysics();
 }
 
