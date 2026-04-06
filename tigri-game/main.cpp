@@ -3,6 +3,7 @@
 #include "SDLW.h"
 #include "Game.h"
 #include "GameplayScene.h"
+#include "Debuggable.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
 	SDLW_Window window("Tigri: The Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
 	SDLW_Renderer renderer(window.getRawPtr(), -1, 0);
 	SDLW_Texture::setRenderer(renderer.getRawPtr());
-
+	
 	Game game(renderer);
 	game.changeScene(new GameplayScene());
 	while (game.isRunning())
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
 		game.render();
 		SDL_Delay(16);
 	}
-
 	SDL_Quit();
+
 	return 0;
 }
