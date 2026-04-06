@@ -5,10 +5,13 @@
 #include "SDL.h"
 #include "SDLW.h"
 
+const static int dashAnimFrameTime = 6;
+const static int fallingAnimFrameTime = 6;
+
 void Player::m_tickCollChecks()
 {
 	const float normalBounceSpeed = 12.0f;
-	const float dashedBounceSpeed = 14.0f;
+	const float dashedBounceSpeed = 17.0f;
 	for (auto& platform : m_platformsRef)
 	{
 		bool collided = m_collBox.checkCollision(platform->getCollBox());
@@ -16,6 +19,8 @@ void Player::m_tickCollChecks()
 		{
 			m_ySpeed = m_dashingDownwards ? -dashedBounceSpeed : -normalBounceSpeed;
 			m_dashingDownwards = false;
+			m_dashCounterOngoing = 0;
+			m_dashCounter = 0;
 			m_y = platform->getY() - m_collBox.getBox().height - m_collBox.getBox().yOffs;
 			break;
 		}
@@ -27,7 +32,6 @@ void Player::m_handleControlling()
 	const Controller& controller = Game::getController();
 	const float sideAcceleration = 0.8f;
 	const float friction = 0.5f;
-	const float downwardsDashSpeed = 30.0f;
 
 	if (controller.isPressingRight())
 	{
@@ -45,8 +49,7 @@ void Player::m_handleControlling()
 
 	if (controller.isPressingDown() && !m_dashingDownwards)
 	{
-		m_ySpeed = downwardsDashSpeed;
-		m_dashingDownwards = true;
+		m_dashCounterOngoing = true;
 	}
 }
 
@@ -57,13 +60,54 @@ void Player::m_handlePhysics()
 	m_xSpeed = GameUtils::clamp(m_xSpeed, -maxSideSpeed, maxSideSpeed);
 	m_yAcceleration = gravity;
 	m_applyPhysics();
+	m_fallingStarted = m_ySpeed > 0;
+	if (!m_fallingStarted)
+	{
+		m_fallingCounter = 0;
+	}
+}
+
+void Player::m_handleDash()
+{
+	const float downwardsDashSpeed = 30.0f;
+	if (m_dashCounterOngoing)
+	{
+		if (++m_dashCounter >= 3*dashAnimFrameTime)
+		{
+			m_ySpeed = downwardsDashSpeed;
+			m_dashingDownwards = true;
+			m_dashCounterOngoing = false;
+		}
+	}
 }
 
 void Player::tick()
 {
 	m_handleControlling();
+	m_handleDash();
 	m_handlePhysics();
 	m_tickCollChecks();
+}
+
+void Player::m_drawDashing(SDL_Rect& drawRegion)
+{
+	const int dashAnimFramesX[] = {
+		0,
+		1 * 200,
+		2 * 200,
+		3 * 200
+	};
+	drawRegion.x = dashAnimFramesX[m_dashCounter / dashAnimFrameTime];
+	drawRegion.y = 200;
+}
+
+void Player::m_drawDefault(SDL_Rect& drawRegion)
+{
+	if (m_fallingStarted && m_fallingCounter < 3 * fallingAnimFrameTime)
+	{
+		m_fallingCounter++;
+	}
+	drawRegion.x = (m_fallingCounter / fallingAnimFrameTime) * 200;
 }
 
 void Player::draw(const SDLW_Renderer& renderer)
@@ -74,9 +118,17 @@ void Player::draw(const SDLW_Renderer& renderer)
 		.w = 200,
 		.h = 200
 	};
+	if (m_dashCounterOngoing || m_dashingDownwards)
+	{
+		Player::m_drawDashing(drawRegion);
+	}
+	else
+	{
+		Player::m_drawDefault(drawRegion);
+	}
 	SDL_Rect dest = {
-		.x = (int)m_x,
-		.y = (int)m_y - 70,
+		.x = (int)m_x - 100,
+		.y = (int)m_y - 100,
 		.w = 200,
 		.h = 200
 	};

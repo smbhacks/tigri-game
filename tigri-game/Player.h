@@ -12,8 +12,15 @@ private:
 	void m_handleControlling();
 	void m_handlePhysics();
 	void m_tickCollChecks();
+	void m_handleDash();
+	void m_drawDashing(SDL_Rect& drawRegion);
+	void m_drawDefault(SDL_Rect& drawRegion);
 	std::vector<std::unique_ptr<Platform>>& m_platformsRef; // needed for coll checks
 	bool m_dashingDownwards = false;
+	bool m_dashCounterOngoing = false;
+	int m_dashCounter = 0;
+	bool m_fallingStarted = false;
+	int m_fallingCounter = 0;
 	SDLW_Texture m_texture;
 
 public:

@@ -20,7 +20,7 @@ public:
 	GameplayScene() 
 		: Debuggable("GameplayScene")
 		, Scene()
-		, m_player(Box(0, 50, 166, 73), m_platforms)
+		, m_player(Box(-75, -30, 150, 73), m_platforms)
 	{
         m_platforms.push_back(std::make_unique<Platform>(Box(0, 0, 100, 32)));
 	}
