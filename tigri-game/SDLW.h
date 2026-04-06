@@ -1,7 +1,11 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <cstring>
 #include "SDL.h"
+#include "SDL_image.h"
 #include "Debuggable.h"
+#include "GameUtils.h"
 
 class SDLW_Renderer : private Debuggable
 {
@@ -29,4 +33,38 @@ public:
 	~SDLW_Window() { SDL_DestroyWindow(m_window); }
 
 	SDL_Window* getRawPtr() const { return m_window; }
+};
+
+class TextureInstance : private Debuggable
+{
+public:
+	const char* path;
+	int counter = 1;
+	SDL_Texture* texturePtr = nullptr;
+	explicit TextureInstance(const char* path) 
+		: Debuggable("TextureInstance")
+		, path(path)
+	{}
+    bool operator==(const TextureInstance& other) const
+	{
+		return strcmp(this->path, other.path) == 0;
+	}
+};
+
+class SDLW_Texture : private Debuggable
+{
+private:
+	static SDL_Renderer* m_renderer;
+	const char* m_path;
+	SDL_Texture* m_texture;
+	static std::vector<TextureInstance> m_textureInstances;
+
+public:
+	SDLW_Texture(const char* path);
+	~SDLW_Texture();
+	static void setRenderer(SDL_Renderer* renderer)
+	{
+		m_renderer = renderer;
+	}
+	SDL_Texture* getRawPtr() const { return m_texture; }
 };

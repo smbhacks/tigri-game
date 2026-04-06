@@ -2,6 +2,8 @@
 #include "Platform.h"
 #include "Game.h"
 #include "GameUtils.h"
+#include "SDL.h"
+#include "SDLW.h"
 
 void Player::m_tickCollChecks()
 {
@@ -14,7 +16,7 @@ void Player::m_tickCollChecks()
 		{
 			m_ySpeed = m_dashingDownwards ? -dashedBounceSpeed : -normalBounceSpeed;
 			m_dashingDownwards = false;
-			m_y = platform->getY() - m_collBox.getBox().height - ((m_y + m_collBox.getBox().height) - platform->getY());
+			m_y = platform->getY() - m_collBox.getBox().height - m_collBox.getBox().yOffs;
 			break;
 		}
 	}
@@ -62,4 +64,21 @@ void Player::tick()
 	m_handleControlling();
 	m_handlePhysics();
 	m_tickCollChecks();
+}
+
+void Player::draw(const SDLW_Renderer& renderer)
+{
+	SDL_Rect drawRegion = {
+		.x = 0,
+		.y = 0,
+		.w = 200,
+		.h = 200
+	};
+	SDL_Rect dest = {
+		.x = (int)m_x,
+		.y = (int)m_y - 70,
+		.w = 200,
+		.h = 200
+	};
+	SDL_RenderCopy(renderer.getRawPtr(), m_texture.getRawPtr(), &drawRegion, &dest);
 }

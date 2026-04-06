@@ -21,6 +21,7 @@ void GameplayScene::tick()
 
 void GameplayScene::draw(const SDLW_Renderer& renderer)
 {
+	m_player.draw(renderer);
 	m_player.drawCollBox(renderer, m_camera);
 	for (auto& platform : m_platforms)
 	{

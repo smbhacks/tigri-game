@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "SDL.h"
+#include "SDLW.h"
 
 Controller Game::m_controller;
 

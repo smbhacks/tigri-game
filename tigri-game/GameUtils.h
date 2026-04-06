@@ -13,4 +13,15 @@ namespace GameUtils
 	{
 		return value < 0 ? -1 : (value > 0) ? 1 : 0;
 	}
+
+    template<typename Iterator, typename T>
+	Iterator find(Iterator haystackStart, Iterator haystackEnd, const T& needle)
+	{
+		for (Iterator it = haystackStart; it != haystackEnd; it++)
+		{
+			if (*it == needle)
+				return it;
+		}
+		return haystackEnd;
+	}
 };
