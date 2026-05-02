@@ -56,7 +56,7 @@ void Player::m_handleControlling()
 void Player::m_handlePhysics()
 {
 	const float maxSideSpeed = 6.5f;
-	const float gravity = 0.31f;
+	const float gravity = 0.38f;
 	m_xSpeed = GameUtils::clamp(m_xSpeed, -maxSideSpeed, maxSideSpeed);
 	m_yAcceleration = gravity;
 	m_applyPhysics();
@@ -89,7 +89,7 @@ void Player::tick()
 	m_tickCollChecks();
 }
 
-void Player::m_drawDashing(SDL_Rect& drawRegion)
+void Player::m_drawDashing(SystemUtils::Rect<int>& drawRegion)
 {
 	const int dashAnimFramesX[] = {
 		0,
@@ -101,7 +101,7 @@ void Player::m_drawDashing(SDL_Rect& drawRegion)
 	drawRegion.y = 200;
 }
 
-void Player::m_drawDefault(SDL_Rect& drawRegion)
+void Player::m_drawDefault(SystemUtils::Rect<int>& drawRegion)
 {
 	if (m_fallingStarted && m_fallingCounter < 3 * fallingAnimFrameTime)
 	{
@@ -112,7 +112,7 @@ void Player::m_drawDefault(SDL_Rect& drawRegion)
 
 void Player::draw(const SDLW_Renderer& renderer)
 {
-	SDL_Rect drawRegion = {
+	SystemUtils::Rect<int> drawRegion = {
 		.x = 0,
 		.y = 0,
 		.w = 200,
@@ -126,11 +126,11 @@ void Player::draw(const SDLW_Renderer& renderer)
 	{
 		Player::m_drawDefault(drawRegion);
 	}
-	SDL_Rect dest = {
+	SystemUtils::Rect<int> dest = {
 		.x = (int)m_x - 100,
 		.y = (int)m_y - 100,
 		.w = 200,
 		.h = 200
 	};
-	SDL_RenderCopy(renderer.getRawPtr(), m_texture.getRawPtr(), &drawRegion, &dest);
+	SystemUtils::renderCopy(m_texture, drawRegion, dest); //SDL_RenderCopy(renderer.getRawPtr(), m_texture.getRawPtr(), &drawRegion, &dest
 }

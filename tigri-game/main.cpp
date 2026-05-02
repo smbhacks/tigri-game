@@ -5,6 +5,8 @@
 #include "GameplayScene.h"
 #include "Debuggable.h"
 
+extern SDLW_Renderer renderer;
+
 int main(int argc, char *argv[])
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
@@ -13,7 +15,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	SDLW_Window window("Tigri: The Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
-	SDLW_Renderer renderer(window.getRawPtr(), -1, 0);
+	renderer = SDLW_Renderer(window.getRawPtr(), -1, 0);
 	SDLW_Texture::setRenderer(renderer.getRawPtr());
 	
 	Game game(renderer);

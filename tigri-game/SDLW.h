@@ -12,10 +12,34 @@ class SDLW_Renderer : private Debuggable
 private:
     SDL_Renderer* m_renderer;
 public:
+	SDLW_Renderer()
+		: m_renderer(nullptr)
+	{ }
     SDLW_Renderer(SDL_Window* window, int index, Uint32 flags)
 		: Debuggable("SDLW_Renderer")
 		, m_renderer(SDL_CreateRenderer(window, index, flags))
-	{}
+	{}	
+	SDLW_Renderer(const SDLW_Renderer&) = delete;
+	SDLW_Renderer& operator=(const SDLW_Renderer&) = delete;
+	SDLW_Renderer(SDLW_Renderer&& other) noexcept
+		: Debuggable("SDLW_Renderer")
+		, m_renderer(other.m_renderer)
+	{
+		other.m_renderer = nullptr;
+	}
+	SDLW_Renderer& operator=(SDLW_Renderer&& other) noexcept
+	{
+		if (this != &other)
+		{
+			if (m_renderer)
+			{
+				SDL_DestroyRenderer(m_renderer);
+			}
+			m_renderer = other.m_renderer;
+			other.m_renderer = nullptr;
+		}
+		return *this;
+	}	
 	~SDLW_Renderer() { SDL_DestroyRenderer(m_renderer); }
 
 	SDL_Renderer* getRawPtr() const { return m_renderer; }
@@ -61,10 +85,16 @@ private:
 
 public:
 	SDLW_Texture(const char* path);
+	SDLW_Texture(const SDLW_Texture&) = delete;
+	SDLW_Texture& operator=(const SDLW_Texture&) = delete;
 	~SDLW_Texture();
 	static void setRenderer(SDL_Renderer* renderer)
 	{
 		m_renderer = renderer;
+	}
+	static SDL_Renderer* getRenderer()
+	{
+		return m_renderer;
 	}
 	SDL_Texture* getRawPtr() const { return m_texture; }
 };

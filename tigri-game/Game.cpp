@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "SDL.h"
 #include "SDLW.h"
+#include "SystemUtils.h"
 
 Controller Game::m_controller;
 
@@ -29,10 +30,10 @@ void Game::tick()
 
 void Game::render()
 {
-	SDL_SetRenderDrawColor(m_renderer.getRawPtr(), 255, 255, 255, SDL_ALPHA_OPAQUE);
-	SDL_RenderClear(m_renderer.getRawPtr());
+	SystemUtils::setRenderDrawColor(255, 255, 255, 255);
+	SystemUtils::renderClear();
 	m_scene->draw(m_renderer);
-	SDL_RenderPresent(m_renderer.getRawPtr());
+	SystemUtils::renderPresent();
 }
 
 void Game::changeScene(Scene* newScene)

@@ -149,6 +149,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDLW.cpp" />
+    <ClCompile Include="SystemUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="GameUtils.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SystemUtils.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SDLW.h" />
   </ItemGroup>

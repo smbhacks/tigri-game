@@ -5,6 +5,7 @@
 #include "Debuggable.h"
 #include "SDLW.h"
 #include "SDL.h"
+#include "SystemUtils.h"
 
 class Player : public Entity, private Debuggable
 {
@@ -13,15 +14,15 @@ private:
 	void m_handlePhysics();
 	void m_tickCollChecks();
 	void m_handleDash();
-	void m_drawDashing(SDL_Rect& drawRegion);
-	void m_drawDefault(SDL_Rect& drawRegion);
+	void m_drawDashing(SystemUtils::Rect<int>& drawRegion);
+	void m_drawDefault(SystemUtils::Rect<int>& drawRegion);
 	std::vector<std::unique_ptr<Platform>>& m_platformsRef; // needed for coll checks
 	bool m_dashingDownwards = false;
 	bool m_dashCounterOngoing = false;
 	int m_dashCounter = 0;
 	bool m_fallingStarted = false;
 	int m_fallingCounter = 0;
-	SDLW_Texture m_texture;
+	SystemUtils::Texture m_texture;
 
 public:
 	Player(Box collBox, std::vector<std::unique_ptr<Platform>>& platformsRef)
