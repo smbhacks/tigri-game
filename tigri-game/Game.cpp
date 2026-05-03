@@ -1,6 +1,4 @@
 #include "Game.h"
-#include "SDL.h"
-#include "SDLW.h"
 #include "SystemUtils.h"
 
 Controller Game::m_controller;
@@ -32,7 +30,7 @@ void Game::render()
 {
 	SystemUtils::setRenderDrawColor(255, 255, 255, 255);
 	SystemUtils::renderClear();
-	m_scene->draw(m_renderer);
+	m_scene->draw();
 	SystemUtils::renderPresent();
 }
 

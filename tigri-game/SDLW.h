@@ -13,7 +13,8 @@ private:
     SDL_Renderer* m_renderer;
 public:
 	SDLW_Renderer()
-		: m_renderer(nullptr)
+		: Debuggable("SDLW_Renderer")
+		, m_renderer(nullptr)
 	{ }
     SDLW_Renderer(SDL_Window* window, int index, Uint32 flags)
 		: Debuggable("SDLW_Renderer")

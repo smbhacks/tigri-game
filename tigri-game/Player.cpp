@@ -110,7 +110,7 @@ void Player::m_drawDefault(SystemUtils::Rect<int>& drawRegion)
 	drawRegion.x = (m_fallingCounter / fallingAnimFrameTime) * 200;
 }
 
-void Player::draw(const SDLW_Renderer& renderer)
+void Player::draw()
 {
 	SystemUtils::Rect<int> drawRegion = {
 		.x = 0,

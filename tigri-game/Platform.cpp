@@ -6,7 +6,7 @@ void Platform::tick()
 	m_applyPhysics();
 }
 
-void Platform::draw(const SDLW_Renderer& renderer)
+void Platform::draw()
 {
 
 }

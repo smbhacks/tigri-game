@@ -3,8 +3,6 @@
 #include "Entity.h"
 #include "Platform.h"
 #include "Debuggable.h"
-#include "SDLW.h"
-#include "SDL.h"
 #include "SystemUtils.h"
 
 class Player : public Entity, private Debuggable
@@ -32,6 +30,6 @@ public:
 		, m_texture("src/player.png")
 	{ }
 	void tick() override;
-	void draw(const SDLW_Renderer& renderer) override;
+	void draw() override;
 };
 

@@ -5,8 +5,6 @@
 #include "Entity.h"
 #include "Player.h"
 #include "Debuggable.h"
-#include "SDL.h"
-#include "SDLW.h"
 #include "Platform.h"
 
 class GameplayScene : public Scene, private Debuggable
@@ -25,6 +23,6 @@ public:
         m_platforms.push_back(std::make_unique<Platform>(Box(0, 0, 100, 32)));
 	}
 	void tick() override;
-	void draw(const SDLW_Renderer& renderer) override;
+	void draw() override;
 };
 

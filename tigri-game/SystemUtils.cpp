@@ -23,7 +23,7 @@ SystemUtils::Texture::Texture(const char* path)
 
 SystemUtils::Texture::~Texture()
 {
-	delete m_implementedInstance;
+	delete reinterpret_cast<SDLW_Texture*>(m_implementedInstance);
 }
 
 void SystemUtils::setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)

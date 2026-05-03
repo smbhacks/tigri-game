@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "Debuggable.h"
-#include "SDLW.h"
 #include "Controller.h"
 
 struct Camera : private Debuggable
@@ -21,7 +20,7 @@ public:
 	{
 		std::cout << "Scene::tick() -> No scene to tick yet!\n";
 	}
-	virtual void draw(const SDLW_Renderer& renderer)
+	virtual void draw()
 	{
 		std::cout << "Scene::draw() -> No scene to draw yet!\n";
 	}

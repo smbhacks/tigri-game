@@ -1,6 +1,4 @@
 #include "Entity.h"
-#include "SDL.h"
-#include "SDLW.h"
 #include "Box.h"
 #include "SystemUtils.h"
 
@@ -12,7 +10,7 @@ void Entity::m_applyPhysics()
 	m_y += m_ySpeed;
 }
 
-void Entity::drawCollBox(const SDLW_Renderer& renderer, const Camera& camera)
+void Entity::drawCollBox(const Camera& camera)
 {
 	Box& box = m_collBox.getBox();
 	SystemUtils::Rect<float> hitboxRect = {

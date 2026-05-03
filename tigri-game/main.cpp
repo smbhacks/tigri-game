@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	renderer = SDLW_Renderer(window.getRawPtr(), -1, 0);
 	SDLW_Texture::setRenderer(renderer.getRawPtr());
 	
-	Game game(renderer);
+	Game game;
 	game.changeScene(new GameplayScene());
 	while (game.isRunning())
 	{
