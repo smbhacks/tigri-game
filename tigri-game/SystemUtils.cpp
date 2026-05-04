@@ -60,3 +60,44 @@ void SystemUtils::renderPresent()
 {
 	SDL_RenderPresent(renderer.getRawPtr());
 }
+
+static void handleInput(const SDL_Event& event, Controller& controller)
+{
+	const SDL_Keycode leftKey = SDLK_LEFT;
+	const SDL_Keycode rightKey = SDLK_RIGHT;
+	const SDL_Keycode downKey = SDLK_DOWN;
+	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+	{
+		bool isKeyDownEvent = (event.type == SDL_KEYDOWN);
+		switch (event.key.keysym.sym)
+		{
+		case leftKey:
+			controller.handleInput(Key::Left, isKeyDownEvent);
+			break;
+		case rightKey:
+			controller.handleInput(Key::Right, isKeyDownEvent);
+			break;
+		case downKey:
+			controller.handleInput(Key::Down, isKeyDownEvent);
+			break;
+		}
+	}
+}
+
+void SystemUtils::handleEvents(Controller& controller)
+{
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		handleInput(event, controller);
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			shutdownRequestedFlag = true;
+			break;
+
+		default:
+			break;
+		}
+	}
+}

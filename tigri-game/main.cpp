@@ -20,9 +20,9 @@ int main(int argc, char *argv[])
 	
 	Game game;
 	game.changeScene(new GameplayScene());
-	while (game.isRunning())
+	while (!SystemUtils::isShutdownRequested())
 	{
-		game.handleEvents();
+		SystemUtils::handleEvents(game.getController());
 		game.tick();
 		game.render();
 		SDL_Delay(16);

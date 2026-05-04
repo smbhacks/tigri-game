@@ -1,10 +1,15 @@
 #pragma once
 #include <cstdint>
+#include "Controller.h"
 
 // The core uses these so we can seperate the SDL and test builds easily
 
-namespace SystemUtils
+class SystemUtils
 {
+private:
+	static inline bool shutdownRequestedFlag = false;
+
+public:
 	class Texture
 	{
 	private:
@@ -22,10 +27,12 @@ namespace SystemUtils
 		T w;
 		T h;
 	};
-	void setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
-	void renderDrawRectF(const Rect<float>& rect);
-	void renderFillRectF(const Rect<float>& rect);
-	void renderCopy(const Texture& texture, Rect<int>& srcRect, Rect<int>& dstRect);
-	void renderClear();
-	void renderPresent();
+	static bool isShutdownRequested() { return shutdownRequestedFlag; }
+	static void setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+	static void renderDrawRectF(const Rect<float>& rect);
+	static void renderFillRectF(const Rect<float>& rect);
+	static void renderCopy(const Texture& texture, Rect<int>& srcRect, Rect<int>& dstRect);
+	static void renderClear();
+	static void renderPresent();
+	static void handleEvents(Controller& controller);
 };

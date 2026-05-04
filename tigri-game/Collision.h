@@ -2,26 +2,6 @@
 #include "Box.h"
 #include "Debuggable.h"
 
-//	struct Vec2D
-//	{
-//		// origin is collision box's top left point
-//		float x;
-//		float y;
-//	};
-//	
-//	struct CollisionResult
-//	{
-//		Vec2D topLeft;
-//		Vec2D topRight;
-//		Vec2D bottomLeft;
-//		Vec2D bottomRight;
-//	
-//		bool topLeftCollided = false;
-//		bool topRightCollided = false;
-//		bool bottomLeftCollided = false;
-//		bool bottomRightCollided = false;
-//	};
-
 class CollisionBox : private Debuggable
 {
 private:

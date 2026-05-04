@@ -1,8 +1,6 @@
 #pragma once
 #include "Collision.h"
 #include "Debuggable.h"
-#include "SDL.h"
-#include "SDLW.h"
 #include "Scene.h"
 
 class Entity

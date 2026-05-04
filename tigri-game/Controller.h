@@ -1,6 +1,12 @@
 #pragma once
 #include "Debuggable.h"
-#include "SDL.h"
+
+enum Key
+{
+	Right,
+	Left,
+	Down
+};
 
 class Controller : private Debuggable
 {
@@ -14,7 +20,7 @@ public:
 		: Debuggable("Controller")
 	{
 	}
-	void handleInput(SDL_Event& event);
+	void handleInput(Key key, bool pressedState);
 	bool isPressingRight() const { return m_pressingRight; };
 	bool isPressingLeft() const { return m_pressingLeft; };
 	bool isPressingDown() const { return m_pressingDown; };

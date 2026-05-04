@@ -3,24 +3,6 @@
 
 Controller Game::m_controller;
 
-void Game::handleEvents()
-{
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
-	{
-		m_controller.handleInput(event);
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			m_isRunning = false;
-			break;
-
-		default:
-			break;
-		}
-	}
-}
-
 void Game::tick()
 {
 	m_scene->tick();

@@ -2,8 +2,6 @@
 #include "Platform.h"
 #include "Game.h"
 #include "GameUtils.h"
-#include "SDL.h"
-#include "SDLW.h"
 
 const static int dashAnimFrameTime = 6;
 const static int fallingAnimFrameTime = 6;
