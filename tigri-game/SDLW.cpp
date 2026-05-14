@@ -1,4 +1,5 @@
 #include "SDLW.h"
+#include "memtrace.h"
 
 SDL_Renderer* SDLW_Texture::m_renderer;
 std::vector<TextureInstance> SDLW_Texture::m_textureInstances;

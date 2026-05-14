@@ -16,6 +16,6 @@ public:
 		, m_y(y)
 		, m_box(box)
 	{ }
-	bool checkCollision(const CollisionBox& otherCollBox);
+	static bool checkCollision(const CollisionBox& collBox1, const CollisionBox& collBox2);
 	Box& getBox() { return m_box; }
 };

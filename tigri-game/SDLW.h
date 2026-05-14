@@ -20,14 +20,6 @@ public:
 		: Debuggable("SDLW_Renderer")
 		, m_renderer(SDL_CreateRenderer(window, index, flags))
 	{}	
-	SDLW_Renderer(const SDLW_Renderer&) = delete;
-	SDLW_Renderer& operator=(const SDLW_Renderer&) = delete;
-	SDLW_Renderer(SDLW_Renderer&& other) noexcept
-		: Debuggable("SDLW_Renderer")
-		, m_renderer(other.m_renderer)
-	{
-		other.m_renderer = nullptr;
-	}
 	SDLW_Renderer& operator=(SDLW_Renderer&& other) noexcept
 	{
 		if (this != &other)
@@ -86,8 +78,6 @@ private:
 
 public:
 	SDLW_Texture(const char* path);
-	SDLW_Texture(const SDLW_Texture&) = delete;
-	SDLW_Texture& operator=(const SDLW_Texture&) = delete;
 	~SDLW_Texture();
 	static void setRenderer(SDL_Renderer* renderer)
 	{

@@ -1,7 +1,13 @@
 #include "SystemUtils.h"
+#include "Defines.h"
+#include "memtrace.h"
+
+#ifndef TEST_BUILD
 #include "SDLW.h"
 #include "SDL.h"
+#endif
 
+#ifndef TEST_BUILD
 SDLW_Renderer renderer;
 
 template<typename R, typename T>
@@ -101,3 +107,45 @@ void SystemUtils::handleEvents(Controller& controller)
 		}
 	}
 }
+#endif
+
+#ifdef TEST_BUILD
+typedef char dummyType;
+
+SystemUtils::Texture::Texture(const char* path)
+	: m_path(path)
+{
+}
+
+SystemUtils::Texture::~Texture()
+{
+}
+
+void SystemUtils::setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+}
+
+void SystemUtils::renderDrawRectF(const Rect<float>& rect)
+{
+}
+
+void SystemUtils::renderFillRectF(const Rect<float>& rect)
+{
+}
+
+void SystemUtils::renderCopy(const Texture& texture, Rect<int>& srcRect, Rect<int>& dstRect)
+{
+}
+
+void SystemUtils::renderClear()
+{
+}
+
+void SystemUtils::renderPresent()
+{
+}
+
+void SystemUtils::handleEvents(Controller& controller)
+{
+}
+#endif

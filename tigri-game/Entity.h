@@ -25,5 +25,5 @@ public:
 	virtual void draw() = 0;
 	float howOffscreenX();
 	CollisionBox& getCollBox() { return m_collBox; }
-	float getY() { return m_y; }
+	float getY() const { return m_y; }
 };

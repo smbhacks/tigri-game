@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "SystemUtils.h"
+#include "memtrace.h"
 
 Controller Game::m_controller;
 

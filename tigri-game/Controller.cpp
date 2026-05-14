@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "memtrace.h"
 
 void Controller::handleInput(Key key, bool pressedState)
 {

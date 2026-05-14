@@ -1,4 +1,5 @@
 #include "Platform.h"
+#include "memtrace.h"
 
 void Platform::tick()
 {

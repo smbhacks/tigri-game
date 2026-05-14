@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include "Entity.h"
 #include "Platform.h"
 #include "Debuggable.h"

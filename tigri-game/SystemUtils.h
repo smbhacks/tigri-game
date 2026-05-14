@@ -19,6 +19,7 @@ public:
 		Texture(const char* path);
 		~Texture();
 		void* getInstance() const { return m_implementedInstance; }
+		const char* getPath() const { return m_path; }
 	};
 	template<typename T>
 	struct Rect {

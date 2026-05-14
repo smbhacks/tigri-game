@@ -2,6 +2,7 @@
 #include "Platform.h"
 #include "Game.h"
 #include "GameUtils.h"
+#include "memtrace.h"
 
 const static int dashAnimFrameTime = 6;
 const static int fallingAnimFrameTime = 6;
@@ -12,7 +13,7 @@ void Player::m_tickCollChecks()
 	const float dashedBounceSpeed = 17.0f;
 	for (auto& platform : m_platformsRef)
 	{
-		bool collided = m_collBox.checkCollision(platform->getCollBox());
+		bool collided = CollisionBox::checkCollision(m_collBox, platform->getCollBox());
 		if (collided)
 		{
 			m_ySpeed = m_dashingDownwards ? -dashedBounceSpeed : -normalBounceSpeed;

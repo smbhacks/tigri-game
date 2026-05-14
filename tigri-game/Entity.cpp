@@ -1,6 +1,7 @@
 #include "Entity.h"
 #include "Box.h"
 #include "SystemUtils.h"
+#include "memtrace.h"
 
 void Entity::m_applyPhysics()
 {

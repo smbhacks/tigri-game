@@ -1,7 +1,13 @@
 <Solution>
   <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="Test" />
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="tigri-game/tigri-game.vcxproj" Id="7bcb9025-18b4-4d85-97e9-84afd0ec0c50" />
+  <Project Path="tigri-game/tigri-game.vcxproj" Id="7bcb9025-18b4-4d85-97e9-84afd0ec0c50">
+    <BuildType Solution="Test|x64" Project="Debug" />
+    <Build Solution="Test|x86" Project="false" />
+  </Project>
 </Solution>

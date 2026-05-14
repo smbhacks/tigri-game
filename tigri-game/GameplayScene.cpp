@@ -1,4 +1,5 @@
 #include "GameplayScene.h"
+#include "memtrace.h"
 
 void GameplayScene::tick()
 {
