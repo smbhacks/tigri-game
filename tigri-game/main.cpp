@@ -10,6 +10,7 @@
 #include "gtest_lite.h"
 #else
 #include "SDL.h"
+#include "SDL_mixer.h"
 #include "SDLW.h"
 #endif
 
@@ -21,6 +22,10 @@ int main(int argc, char *argv[])
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
 		std::cout << "Couldn't init SDL2.\n";
+		return -1;
+	}
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		std::cout << "SDL_mixer error: " << Mix_GetError() << std::endl;
 		return -1;
 	}
 	SDLW_Window window("Tigri: The Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);

@@ -10,16 +10,29 @@ private:
 	static inline bool shutdownRequestedFlag = false;
 
 public:
-	class Texture
+	class Resource
 	{
-	private:
+	protected:
 		const char* m_path;
 		void* m_implementedInstance = nullptr;
 	public:
-		Texture(const char* path);
-		~Texture();
+		Resource(const char* path)
+			: m_path(path)
+		{ }
 		void* getInstance() const { return m_implementedInstance; }
 		const char* getPath() const { return m_path; }
+	};
+	class Texture : public Resource 
+	{
+	public:
+		Texture(const char* path);
+		~Texture();
+	};
+	class Music : public Resource 
+	{
+	public:
+		Music(const char* path);
+		~Music();
 	};
 	template<typename T>
 	struct Rect {
@@ -36,4 +49,5 @@ public:
 	static void renderClear();
 	static void renderPresent();
 	static void handleEvents(Controller& controller);
+	static void playMusic(const Music& music, int loops);
 };

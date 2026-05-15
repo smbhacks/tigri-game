@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstring>
 #include "SDL.h"
+#include "SDL_mixer.h"
 #include "SDL_image.h"
 #include "Debuggable.h"
 #include "GameUtils.h"
@@ -88,4 +89,20 @@ public:
 		return m_renderer;
 	}
 	SDL_Texture* getRawPtr() const { return m_texture; }
+};
+
+class SDLW_Music : private Debuggable
+{
+private:
+	Mix_Music* m_music;
+public:
+	SDLW_Music(const char* path)
+		: Debuggable("SDLW_Music")
+		, m_music(Mix_LoadMUS(path))
+	{ }
+	~SDLW_Music()
+	{
+		Mix_FreeMusic(m_music);
+	}
+	Mix_Music* getRawPtr() const { return m_music; }
 };

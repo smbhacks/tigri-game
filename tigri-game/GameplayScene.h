@@ -13,6 +13,7 @@ private:
 	Player m_player;
 	Camera m_camera;
     std::vector<std::unique_ptr<Platform>> m_platforms;
+	SystemUtils::Music m_bgMusic;
 
 public:
 	GameplayScene();

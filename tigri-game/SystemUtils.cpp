@@ -22,14 +22,22 @@ R getSDLRect(const SystemUtils::Rect<T>& rect)
 }
 
 SystemUtils::Texture::Texture(const char* path)
-	: m_path(path)
+	: Resource(path)
 {
 	m_implementedInstance = new SDLW_Texture(path);
 }
-
 SystemUtils::Texture::~Texture()
 {
 	delete reinterpret_cast<SDLW_Texture*>(m_implementedInstance);
+}
+SystemUtils::Music::Music(const char* path)
+	: Resource(path)
+{
+	m_implementedInstance = new SDLW_Music(path);
+}
+SystemUtils::Music::~Music()
+{
+	delete reinterpret_cast<SDLW_Music*>(m_implementedInstance);
 }
 
 void SystemUtils::setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
@@ -111,17 +119,32 @@ void SystemUtils::handleEvents(Controller& controller)
 		}
 	}
 }
+
+void SystemUtils::playMusic(const Music& music, int loops)
+{
+	Mix_Music* musicPtr = reinterpret_cast<SDLW_Music*>(music.getInstance())->getRawPtr();
+	Mix_PlayMusic(musicPtr, loops);
+}
+
 #endif
 
 #ifdef TEST_BUILD
 typedef char dummyType;
 
 SystemUtils::Texture::Texture(const char* path)
-	: m_path(path)
+	: Resource(path)
+{
+}
+SystemUtils::Texture::~Texture()
 {
 }
 
-SystemUtils::Texture::~Texture()
+SystemUtils::Music::Music(const char* path)
+	: Resource(path)
+{
+}
+
+SystemUtils::Music::~Music()
 {
 }
 
@@ -150,6 +173,10 @@ void SystemUtils::renderPresent()
 }
 
 void SystemUtils::handleEvents(Controller& controller)
+{
+}
+
+void SystemUtils::playMusic(const Music& music, int loops)
 {
 }
 #endif
