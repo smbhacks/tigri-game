@@ -21,6 +21,8 @@ private:
 	int m_dashCounter = 0;
 	bool m_fallingStarted = false;
 	int m_fallingCounter = 0;
+	bool m_lowerGravityAllowed = false;
+	float m_gravity = 0;
 	SystemUtils::Texture m_texture;
 
 public:

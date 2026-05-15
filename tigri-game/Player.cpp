@@ -4,13 +4,13 @@
 #include "GameUtils.h"
 #include "memtrace.h"
 
-const static int dashAnimFrameTime = 6;
+const static int dashAnimFrameTime = 4;
 const static int fallingAnimFrameTime = 6;
 
 void Player::m_tickCollChecks()
 {
-	const float normalBounceSpeed = 12.0f;
-	const float dashedBounceSpeed = 17.0f;
+	const float normalBounceSpeed = 14.0f;
+	const float dashedBounceSpeed = 16.0f;
 	for (auto& platform : m_platformsRef)
 	{
 		bool collided = CollisionBox::checkCollision(m_collBox, platform->getCollBox());
@@ -18,8 +18,9 @@ void Player::m_tickCollChecks()
 		{
 			m_ySpeed = m_dashingDownwards ? -dashedBounceSpeed : -normalBounceSpeed;
 			m_dashingDownwards = false;
-			m_dashCounterOngoing = 0;
+			m_dashCounterOngoing = false;
 			m_dashCounter = 0;
+			m_lowerGravityAllowed = true;
 			m_y = platform->getY() - m_collBox.getBox().height - m_collBox.getBox().yOffs;
 			break;
 		}
@@ -50,25 +51,38 @@ void Player::m_handleControlling()
 	{
 		m_dashCounterOngoing = true;
 	}
+
+	if (controller.isPressingUp() && m_lowerGravityAllowed)
+	{
+		m_gravity = 0.28f;
+	}
+	else
+	{
+		m_gravity = 0.48f;
+		m_lowerGravityAllowed = false;
+	}
 }
 
 void Player::m_handlePhysics()
 {
 	const float maxSideSpeed = 6.5f;
-	const float gravity = 0.38f;
 	m_xSpeed = GameUtils::clamp(m_xSpeed, -maxSideSpeed, maxSideSpeed);
-	m_yAcceleration = gravity;
+	m_yAcceleration = m_gravity;
 	m_applyPhysics();
 	m_fallingStarted = m_ySpeed > 0;
 	if (!m_fallingStarted)
 	{
 		m_fallingCounter = 0;
 	}
+	else
+	{
+		m_lowerGravityAllowed = false;
+	}
 }
 
 void Player::m_handleDash()
 {
-	const float downwardsDashSpeed = 30.0f;
+	const float downwardsDashSpeed = 40.0f;
 	if (m_dashCounterOngoing)
 	{
 		if (++m_dashCounter >= 3*dashAnimFrameTime)

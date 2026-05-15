@@ -14,5 +14,8 @@ void Controller::handleInput(Key key, bool pressedState)
 	case Key::Down:
 		m_pressingDown = pressedState;
 		break;
+	case Key::Up:
+		m_pressingUp = pressedState;
+		break;
 	}
 }

@@ -72,6 +72,7 @@ static void handleInput(const SDL_Event& event, Controller& controller)
 	const SDL_Keycode leftKey = SDLK_LEFT;
 	const SDL_Keycode rightKey = SDLK_RIGHT;
 	const SDL_Keycode downKey = SDLK_DOWN;
+	const SDL_KeyCode upKey = SDLK_UP;
 	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 	{
 		bool isKeyDownEvent = (event.type == SDL_KEYDOWN);
@@ -85,6 +86,9 @@ static void handleInput(const SDL_Event& event, Controller& controller)
 			break;
 		case downKey:
 			controller.handleInput(Key::Down, isKeyDownEvent);
+			break;
+		case upKey:
+			controller.handleInput(Key::Up, isKeyDownEvent);
 			break;
 		}
 	}
