@@ -15,13 +15,7 @@ private:
     std::vector<std::unique_ptr<Platform>> m_platforms;
 
 public:
-	GameplayScene() 
-		: Scene()
-		, Debuggable("GameplayScene")
-		, m_player(Box(-75, -30, 150, 73), m_platforms)
-	{
-        m_platforms.push_back(std::make_unique<Platform>(Box(0, 0, 100, 32)));
-	}
+	GameplayScene();
 	void tick() override;
 	void draw() override;
 };

@@ -27,6 +27,8 @@ int main(int argc, char *argv[])
 	renderer = SDLW_Renderer(window.getRawPtr(), -1, 0);
 	SDLW_Texture::setRenderer(renderer.getRawPtr());
 	
+	GameUtils::setRandomSeed(time(0));
+
 	Game game;
 	game.changeScene(new GameplayScene());
 	while (!SystemUtils::isShutdownRequested())

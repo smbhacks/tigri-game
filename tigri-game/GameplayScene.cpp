@@ -1,5 +1,15 @@
 #include "GameplayScene.h"
 #include "memtrace.h"
+#include "GameUtils.h"
+
+GameplayScene::GameplayScene()
+	: Scene()
+	, Debuggable("GameplayScene")
+	, m_player(200.0f, -70.0f, Box(-75, -30, 150, 73), m_platforms)
+{
+	m_platforms.push_back(std::make_unique<Platform>(-0.6f, 0.0f, 200.0f, GameUtils::getRandomNum(500.0f, 650.0f)));
+	m_platforms.push_back(std::make_unique<Platform>(-0.8f, 0.0f, 1000.0f, GameUtils::getRandomNum(400.0f, 650.0f)));
+}
 
 void GameplayScene::tick()
 {

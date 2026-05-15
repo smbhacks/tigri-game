@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdlib>
 
 namespace GameUtils
 {
@@ -23,5 +24,22 @@ namespace GameUtils
 				return it;
 		}
 		return haystackEnd;
+	}
+
+	inline void setRandomSeed(unsigned int seed)
+	{
+		srand(seed);
+	}
+
+	template<typename T>
+	inline T getRandomNum(T inclusiveLower, T exclusiveUpper)
+	{
+		return inclusiveLower + rand() % exclusiveUpper;
+	}
+	template<>
+	inline float getRandomNum(float inclusiveLower, float exclusiveUpper)
+	{
+		float scale = rand() / float(RAND_MAX);
+		return inclusiveLower + scale * (exclusiveUpper - inclusiveLower);
 	}
 };

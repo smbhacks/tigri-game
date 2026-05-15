@@ -19,6 +19,11 @@ public:
 	Entity(Box collBox) 
 		: m_collBox(m_x, m_y, collBox)
 	{ }
+	Entity(Box collBox, float x, float y)
+		: m_x(x)
+		, m_y(y)
+		, m_collBox(m_x, m_y, collBox)
+	{ }
 	virtual ~Entity() = default;
 	virtual void tick() = 0;
 	void drawCollBox(const Camera& camera);

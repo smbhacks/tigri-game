@@ -4,12 +4,14 @@
 class Platform : public Entity, private Debuggable
 {
 public:
-	Platform(Box collBox)
-		: Entity(collBox)
+	Platform(float xSpeed, float ySpeed, float xPos, float yPos)
+		: Entity(Box(0, 0, 100, 32))
 		, Debuggable("Platform")
 	{ 
-		m_x = 200;
-		m_y = 600;
+		m_xSpeed = xSpeed;
+		m_ySpeed = ySpeed;
+		m_x = xPos;
+		m_y = yPos;
 	}
 	void tick() override;
 	void draw() override;

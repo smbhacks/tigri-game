@@ -24,8 +24,8 @@ private:
 	SystemUtils::Texture m_texture;
 
 public:
-	Player(Box collBox, std::vector<std::unique_ptr<Platform>>& platformsRef)
-		: Entity(collBox)
+	Player(float x, float y, Box collBox, std::vector<std::unique_ptr<Platform>>& platformsRef)
+		: Entity(collBox, x, y)
 		, Debuggable("Player")
 		, m_platformsRef(platformsRef)
 		, m_texture("src/player.png")
