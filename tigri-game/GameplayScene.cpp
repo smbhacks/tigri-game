@@ -15,12 +15,13 @@ GameplayScene::GameplayScene()
 
 void GameplayScene::tick()
 {
+	m_camera.setX(m_camera.getX() + 1.0f);
 	for (auto it = m_platforms.begin(); it != m_platforms.end();)
 	{
 		auto& platformPtr = *it;
 
 		platformPtr->tick();
-		if (platformPtr->howOffscreenX() < -200.0f)
+		if (platformPtr->howOffscreenX(m_camera) < -200.0f)
 		{
 			it = m_platforms.erase(it);
 		}
@@ -34,7 +35,7 @@ void GameplayScene::tick()
 
 void GameplayScene::draw()
 {
-	m_player.draw();
+	m_player.draw(m_camera);
 	m_player.drawCollBox(m_camera);
 	for (auto& platform : m_platforms)
 	{

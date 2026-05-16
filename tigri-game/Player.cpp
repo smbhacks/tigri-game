@@ -2,6 +2,7 @@
 #include "Platform.h"
 #include "Game.h"
 #include "GameUtils.h"
+#include "Camera.h"
 #include "memtrace.h"
 
 const static int dashAnimFrameTime = 4;
@@ -123,7 +124,7 @@ void Player::m_drawDefault(SystemUtils::Rect<int>& drawRegion)
 	drawRegion.x = (m_fallingCounter / fallingAnimFrameTime) * 200;
 }
 
-void Player::draw()
+void Player::draw(const Camera& camera)
 {
 	SystemUtils::Rect<int> drawRegion = {
 		.x = 0,
@@ -140,8 +141,8 @@ void Player::draw()
 		Player::m_drawDefault(drawRegion);
 	}
 	SystemUtils::Rect<int> dest = {
-		.x = (int)m_x - 100,
-		.y = (int)m_y - 100,
+		.x = (int)m_x - 100 - (int)camera.getX(),
+		.y = (int)m_y - 100 - (int)camera.getY(),
 		.w = 200,
 		.h = 200
 	};

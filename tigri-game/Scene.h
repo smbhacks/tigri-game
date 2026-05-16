@@ -3,15 +3,6 @@
 #include "Debuggable.h"
 #include "Controller.h"
 
-struct Camera : private Debuggable
-{
-	float x = 0;
-	float y = 0;
-	Camera()
-		: Debuggable("Camera")
-	{ }
-};
-
 class Scene
 {
 public:

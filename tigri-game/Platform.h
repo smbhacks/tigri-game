@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include "Camera.h"
 
 class Platform : public Entity, private Debuggable
 {
@@ -14,5 +15,5 @@ public:
 		m_y = yPos;
 	}
 	void tick() override;
-	void draw() override;
+	void draw(const Camera& camera) override;
 };

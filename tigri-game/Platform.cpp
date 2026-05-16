@@ -6,7 +6,7 @@ void Platform::tick()
 	m_applyPhysics();
 }
 
-void Platform::draw()
+void Platform::draw(const Camera& camera)
 {
 
 }

@@ -1,6 +1,14 @@
 #include "Controller.h"
 #include "memtrace.h"
 
+void Controller::tick()
+{
+	m_pressedLeftLastTick = m_pressingLeft;
+	m_pressedRightLastTick = m_pressingRight;
+	m_pressedDownLastTick = m_pressingDown;
+	m_pressedUpLastTick = m_pressingUp;
+}
+
 void Controller::handleInput(Key key, bool pressedState)
 {
 	switch (key)

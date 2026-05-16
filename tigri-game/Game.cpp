@@ -6,6 +6,7 @@ Controller Game::m_controller;
 
 void Game::tick()
 {
+	m_controller.tick();
 	m_scene->tick();
 }
 

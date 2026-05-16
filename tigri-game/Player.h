@@ -33,6 +33,6 @@ public:
 		, m_texture("src/player.png")
 	{ }
 	void tick() override;
-	void draw() override;
+	void draw(const Camera& camera) override;
 };
 

@@ -2,6 +2,7 @@
 #include "Collision.h"
 #include "Debuggable.h"
 #include "Scene.h"
+#include "Camera.h"
 
 class Entity
 {
@@ -27,8 +28,8 @@ public:
 	virtual ~Entity() = default;
 	virtual void tick() = 0;
 	void drawCollBox(const Camera& camera);
-	virtual void draw() = 0;
-	float howOffscreenX();
+	virtual void draw(const Camera& camera) = 0;
+	float howOffscreenX(const Camera& camera);
 	CollisionBox& getCollBox() { return m_collBox; }
 	float getY() const { return m_y; }
 };
