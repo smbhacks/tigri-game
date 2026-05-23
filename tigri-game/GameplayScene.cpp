@@ -15,7 +15,7 @@ GameplayScene::GameplayScene()
 
 void GameplayScene::tick()
 {
-	m_camera.setX(m_camera.getX() + 1.0f);
+	m_camera.setX(m_camera.getX() + 0.2f);
 	for (auto it = m_platforms.begin(); it != m_platforms.end();)
 	{
 		auto& platformPtr = *it;
