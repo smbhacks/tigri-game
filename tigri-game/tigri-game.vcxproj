@@ -201,6 +201,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FragilePlatform.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameplayScene.cpp" />
     <ClCompile Include="GameUtils.cpp" />
@@ -209,6 +210,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDLW.cpp" />
+    <ClCompile Include="SolidPlatform.cpp" />
     <ClCompile Include="SystemUtils.cpp" />
     <ClCompile Include="TickTimer.cpp" />
   </ItemGroup>
@@ -220,6 +222,7 @@
     <ClInclude Include="Debuggable.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="FragilePlatform.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameplayScene.h" />
     <ClInclude Include="GameUtils.h" />
@@ -227,6 +230,7 @@
     <ClInclude Include="memtrace.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SolidPlatform.h" />
     <ClInclude Include="SystemUtils.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SDLW.h" />
