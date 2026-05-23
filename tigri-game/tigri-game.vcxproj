@@ -210,6 +210,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDLW.cpp" />
     <ClCompile Include="SystemUtils.cpp" />
+    <ClCompile Include="TickTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
@@ -229,6 +230,7 @@
     <ClInclude Include="SystemUtils.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SDLW.h" />
+    <ClInclude Include="TickTimer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

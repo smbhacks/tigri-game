@@ -32,4 +32,5 @@ public:
 	float howOffscreenX(const Camera& camera);
 	CollisionBox& getCollBox() { return m_collBox; }
 	float getY() const { return m_y; }
+	float getX() const { return m_x; }
 };

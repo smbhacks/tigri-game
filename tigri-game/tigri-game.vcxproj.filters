@@ -66,6 +66,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="TickTimer.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDLW.h">
@@ -117,6 +120,9 @@
       <Filter>Header Files\Misc</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TickTimer.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
