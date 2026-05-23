@@ -31,7 +31,7 @@ float GameplayScene::m_getRandomPlatformSpeed()
 		timer.setRestartVal(newRestartVal);
 		timer.restart();
 	}
-	return GameUtils::getRandomNum(m_platformBaseSpeed, m_platformBaseSpeed - randomnessIntervalSize);
+	return GameUtils::getRandomNum(m_platformBaseSpeed - randomnessIntervalSize, m_platformBaseSpeed);
 }
 
 void GameplayScene::tick()

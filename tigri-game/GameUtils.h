@@ -1,5 +1,13 @@
 #pragma once
 #include <cstdlib>
+#include <stdexcept>
+
+template<typename T> 
+static void assertInterval(const T& inclusiveLower, const T& exclusiveUpper)
+{
+	if (inclusiveLower >= exclusiveUpper)
+		throw std::invalid_argument("Got an inclusiveLower that's greater or equal to exclusiveUpper. That is an empty set.");
+}
 
 namespace GameUtils
 {
@@ -34,11 +42,13 @@ namespace GameUtils
 	template<typename T>
 	inline T getRandomNum(T inclusiveLower, T exclusiveUpper)
 	{
+		assertInterval(inclusiveLower, exclusiveUpper);
 		return inclusiveLower + rand() % exclusiveUpper;
 	}
 	template<>
 	inline float getRandomNum(float inclusiveLower, float exclusiveUpper)
 	{
+		assertInterval(inclusiveLower, exclusiveUpper);
 		float scale = rand() / float(RAND_MAX);
 		return inclusiveLower + scale * (exclusiveUpper - inclusiveLower);
 	}

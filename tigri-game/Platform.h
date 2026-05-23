@@ -12,7 +12,7 @@ protected:
 
 public:
 	Platform(float xSpeed, float ySpeed, float xPos, float yPos)
-		: Entity(Box(0, 0, 100, 32))
+		: Entity(Box(0, 0, 100, 8))
 		, m_texture("src/platforms.png")
 	{ 
 		m_xSpeed = xSpeed;

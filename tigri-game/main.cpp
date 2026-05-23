@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include "Defines.h"
 #include "Game.h"
 #include "GameplayScene.h"
@@ -113,6 +114,13 @@ int main()
 		EXPECT_EQ(lower, GameUtils::clamp(lower - 1, lower, upper));
 		EXPECT_EQ(upper, GameUtils::clamp(upper + 1, lower, upper));
 		EXPECT_EQ(average, GameUtils::clamp(average, lower, upper));
+	} END
+
+	TEST(GameUtils, getRandomNum)
+	{
+		EXPECT_NO_THROW(GameUtils::getRandomNum(-1.0f, 2.0f));
+		EXPECT_THROW(GameUtils::getRandomNum(2.0f, 2.0f), std::invalid_argument);
+		EXPECT_THROW(GameUtils::getRandomNum(3.0f, 2.0f), std::invalid_argument);
 	} END
 }
 #endif
