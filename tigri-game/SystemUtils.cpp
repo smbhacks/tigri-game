@@ -30,6 +30,11 @@ SystemUtils::Texture::~Texture()
 {
 	delete reinterpret_cast<SDLW_Texture*>(m_implementedInstance);
 }
+void SystemUtils::Music::playMusic(int loops)
+{
+	Mix_Music* musicPtr = reinterpret_cast<SDLW_Music*>(getInstance())->getRawPtr();
+	Mix_PlayMusic(musicPtr, loops);
+}
 SystemUtils::Music::Music(const char* path)
 	: Resource(path)
 {
@@ -145,6 +150,7 @@ static void handleInput(const SDL_Event& event, Controller& controller)
 
 void SystemUtils::handleEvents(Controller& controller)
 {
+	controller.setPrevs();
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -161,16 +167,10 @@ void SystemUtils::handleEvents(Controller& controller)
 	}
 }
 
-void SystemUtils::playMusic(const Music& music, int loops)
-{
-	Mix_Music* musicPtr = reinterpret_cast<SDLW_Music*>(music.getInstance())->getRawPtr();
-	Mix_PlayMusic(musicPtr, loops);
-}
-
 void SystemUtils::renderTextWithShadow(const Font& font, const char* string, const Color& color, Rect<int> dstRect, bool centerX)
 {
 	static const int shadowOffset = 2;
-	Text shadowText(font, string, SystemUtils::Color(0, 0, 0, 128));
+	Text shadowText(font, string, SystemUtils::Color(0, 0, 0, GameUtils::clamp(color.a / 2, 1, 255)));
 	Text mainText(font, string, color);
 	if (centerX)
 	{
@@ -248,7 +248,7 @@ void SystemUtils::handleEvents(Controller& controller)
 {
 }
 
-void SystemUtils::playMusic(const Music& music, int loops)
+void SystemUtils::Music::playMusic(int loops)
 {
 }
 

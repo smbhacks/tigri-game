@@ -19,12 +19,19 @@ private:
 	TickTimer m_platformSpawnTimer;
 	std::vector<std::unique_ptr<Platform>> m_platforms;
 	SystemUtils::Music m_bgMusic;
-	SystemUtils::Font m_scoreFont;
+	SystemUtils::Music m_youDiedMusic;
+	SystemUtils::Font m_smallFont;
+	SystemUtils::Font m_bigFont;
 	TickTimer m_scoreTimer;
 	size_t m_score;
 	float m_getRandomPlatformSpeed();
 	void m_drawScore();
 	ParallaxBackground m_bg;
+	bool m_gameOver;
+	TickTimer m_diedTextTimer;
+	void m_tickGameOver();
+	void m_drawGameOver();
+	TickTimer m_diedOptionTimer;
 
 public:
 	GameplayScene();

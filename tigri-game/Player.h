@@ -24,6 +24,7 @@ private:
 	bool m_lowerGravityAllowed = false;
 	float m_gravity = 0;
 	SystemUtils::Texture m_texture;
+	bool m_died = false;
 
 public:
 	Player(float x, float y, Box collBox, std::vector<std::unique_ptr<Platform>>& platformsRef)
@@ -35,5 +36,6 @@ public:
 	void tick() override;
 	void draw(const Camera& camera) override;
 	bool isDashingDownwards() const { return m_dashingDownwards; }
+	bool hasDied() const { return m_died; }
 };
 

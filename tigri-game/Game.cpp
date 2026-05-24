@@ -15,7 +15,7 @@ void Game::tick()
 			changeScene(new GameplayScene(), State::Gameplay);
 			break;
 		case Gameplay:
-			changeScene(new GameplayScene(), State::Gameplay);
+			changeScene(new MenuScene(), State::Menu);
 			break;
 		}
 	}

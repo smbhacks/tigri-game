@@ -97,10 +97,17 @@ void Player::m_handleDash()
 
 void Player::tick()
 {
-	m_handleControlling();
-	m_handleDash();
-	m_handlePhysics();
-	m_tickCollChecks();
+	if (!m_died)
+	{
+		m_handleControlling();
+		m_handleDash();
+		m_handlePhysics();
+		m_tickCollChecks();
+		if (m_y > 900)
+		{
+			m_died = true;
+		}
+	}
 }
 
 void Player::m_drawDashing(SystemUtils::Rect<int>& drawRegion)

@@ -7,13 +7,13 @@ MenuScene::MenuScene()
 	, m_music("src/gm04.mp3")
 	, m_font("src/segoeuisl.ttf", 48)
 {
-	SystemUtils::playMusic(m_music, -1);
+	m_music.playMusic(-1);
 }
 
 void MenuScene::tick()
 {
 	Controller& controller = Game::getController();
-	if (controller.pressedConfirmLastTick())
+	if (controller.isPressingConfirm() && !controller.pressedConfirmLastTick())
 	{
 		m_shutdownSceneFlag = true;
 	}

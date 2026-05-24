@@ -44,6 +44,7 @@ public:
 	class Music : public Resource 
 	{
 	public:
+		void playMusic(int loops);
 		Music(const char* path);
 		~Music();
 	};
@@ -73,6 +74,5 @@ public:
 	static void renderClear();
 	static void renderPresent();
 	static void handleEvents(Controller& controller);
-	static void playMusic(const Music& music, int loops);
 	static void renderTextWithShadow(const Font& font, const char* string, const Color& color, Rect<int> dstRect, bool centerX = false);
 };

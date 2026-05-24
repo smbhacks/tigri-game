@@ -29,6 +29,7 @@ public:
 		: Debuggable("Controller")
 	{
 	}
+	void setPrevs();
 	void handleInput(Key key, bool pressedState);
 	bool isPressingRight() const { return m_pressingRight; };
 	bool isPressingLeft() const { return m_pressingLeft; };
