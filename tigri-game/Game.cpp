@@ -9,13 +9,18 @@ void Game::tick()
 	m_scene->tick();
 	if (m_scene->isSceneReadyToShutdown())
 	{
-		switch (m_gamestate)
+		switch (m_gameState)
 		{
-		case Menu:
-			changeScene(new GameplayScene(), State::Gameplay);
+		case Game::State::Menu:
+			switch (m_gameMode)
+			{
+			case Gamemode::Easy:
+				changeScene(new GameplayScene(), Game::State::Gameplay);
+				break;
+			}
 			break;
-		case Gameplay:
-			changeScene(new MenuScene(), State::Menu);
+		case Game::State::Gameplay:
+			changeScene(new MenuScene(m_gameMode), Game::State::Menu);
 			break;
 		}
 	}
@@ -29,9 +34,9 @@ void Game::render()
 	SystemUtils::renderPresent();
 }
 
-void Game::changeScene(Scene* newScene, State state)
+void Game::changeScene(Scene* newScene, Game::State state)
 {
 	delete m_scene;
 	m_scene = newScene;
-	m_gamestate = state;
+	m_gameState = state;
 }

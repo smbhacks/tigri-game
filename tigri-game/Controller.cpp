@@ -8,6 +8,7 @@ void Controller::setPrevs()
 	m_pressedDownLastTick = m_pressingDown;
 	m_pressedUpLastTick = m_pressingUp;
 	m_pressedConfirmLastTick = m_pressingConfirm;
+	m_pressedSelectLastTick = m_pressingSelect;
 }
 
 void Controller::handleInput(Key key, bool pressedState)
@@ -28,6 +29,9 @@ void Controller::handleInput(Key key, bool pressedState)
 		break;
 	case Key::Confirm:
 		m_pressingConfirm = pressedState;
+		break;
+	case Key::Select:
+		m_pressingSelect = pressedState;
 		break;
 	}
 }

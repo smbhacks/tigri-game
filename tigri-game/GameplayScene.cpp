@@ -57,23 +57,8 @@ void GameplayScene::m_tickGameOver()
 	}
 }
 
-void GameplayScene::tick()
+void GameplayScene::m_spawnPlatforms()
 {
-	m_camera.setX(m_camera.getX() + 0.2f);
-	for (auto it = m_platforms.begin(); it != m_platforms.end();)
-	{
-		auto& platformPtr = *it;
-
-		platformPtr->tick();
-		if (platformPtr->howOffscreenX(m_camera) < -200.0f)
-		{
-			it = m_platforms.erase(it);
-		}
-		else
-		{
-			it++;
-		}
-	}
 	m_platformBaseSpeedIncreaseTimer.tick();
 	if (m_platformSpawnTimer.tick() && !m_gameOver)
 	{
@@ -94,6 +79,26 @@ void GameplayScene::tick()
 		m_platformSpawnTimer.setRestartVal(GameUtils::getRandomNum<size_t>(10, maxTimeToWait));
 		m_platformSpawnTimer.restart();
 	}
+}
+
+void GameplayScene::tick()
+{
+	m_camera.setX(m_camera.getX() + 0.2f);
+	for (auto it = m_platforms.begin(); it != m_platforms.end();)
+	{
+		auto& platformPtr = *it;
+
+		platformPtr->tick();
+		if (platformPtr->howOffscreenX(m_camera) < -200.0f)
+		{
+			it = m_platforms.erase(it);
+		}
+		else
+		{
+			it++;
+		}
+	}
+	m_spawnPlatforms();
 	m_player.tick();
 	if (m_player.hasDied() && !m_gameOver)
 	{

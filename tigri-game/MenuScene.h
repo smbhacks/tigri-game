@@ -3,6 +3,7 @@
 #include "SystemUtils.h"
 #include "ParallaxBackground.h"
 #include "memtrace.h"
+#include "MiscEnums.h"
 
 class MenuScene : public Scene, private Debuggable
 {
@@ -11,9 +12,11 @@ private:
 	SystemUtils::Texture m_titleTexture;
 	ParallaxBackground m_bg;
 	SystemUtils::Font m_font;
+	SystemUtils::Font m_smallFont;
+	Gamemode& modeRef;
 
 public:
-	MenuScene();
+	MenuScene(Gamemode& modeRef);
 	void tick() override;
 	void draw() override;
 };

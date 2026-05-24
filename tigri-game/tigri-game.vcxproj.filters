@@ -149,5 +149,8 @@
     <ClInclude Include="MenuScene.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="MiscEnums.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

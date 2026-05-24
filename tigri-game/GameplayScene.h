@@ -31,6 +31,7 @@ private:
 	bool m_gameOver;
 	TickTimer m_diedTextTimer;
 	void m_tickGameOver();
+	void m_spawnPlatforms();
 	void m_drawGameOver();
 	TickTimer m_diedOptionTimer;
 

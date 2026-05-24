@@ -2,11 +2,13 @@
 #include "Game.h"
 #include "memtrace.h"
 
-MenuScene::MenuScene()
+MenuScene::MenuScene(Gamemode& modeRef)
 	: Scene()
+	, modeRef(modeRef)
 	, m_titleTexture("src/title.png")
 	, m_music("src/gm04.mp3")
 	, m_font("src/segoeuisl.ttf", 48)
+	, m_smallFont("src/segoeuisl.ttf", 24)
 {
 	m_music.playMusic(-1);
 }
@@ -17,6 +19,14 @@ void MenuScene::tick()
 	if (controller.isPressingConfirm() && !controller.pressedConfirmLastTick())
 	{
 		m_shutdownSceneFlag = true;
+	}
+	if (controller.isPressingSelect() && !controller.pressedSelectLastTick())
+	{
+		modeRef = Gamemode((int)modeRef + 1);
+		if (modeRef >= Gamemode::_LastElement)
+		{
+			modeRef = Gamemode::_FirstElement;
+		}
 	}
 }
 
@@ -42,5 +52,18 @@ void MenuScene::draw()
 		.w = 0,
 		.h = 0
 	};
-	SystemUtils::renderTextWithShadow(m_font, "Press [ENTER] to start!", SystemUtils::Color(255, 255, 255, 255), instructionDstRegion, true);
+	SystemUtils::Color whiteColor(255, 255, 255, 255);
+	SystemUtils::renderTextWithShadow(m_font, "Press [ENTER] to start!", whiteColor, instructionDstRegion, true);
+	instructionDstRegion.y += 64;
+	std::string gamemodeText;
+	switch (modeRef)
+	{
+	case Gamemode::Easy:
+		gamemodeText = "Easy mode";
+		break;
+	case Gamemode::Medium:
+		gamemodeText = "Medium mode";
+		break;
+	}
+	SystemUtils::renderTextWithShadow(m_smallFont, ("Press [SPACE] to select: " + gamemodeText).c_str(), whiteColor, instructionDstRegion, true);
 }
