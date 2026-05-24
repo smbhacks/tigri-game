@@ -7,6 +7,7 @@
 #include "Debuggable.h"
 #include "Platform.h"
 #include "TickTimer.h"
+#include "ParallaxBackground.h"
 
 class GameplayScene : public Scene, private Debuggable
 {
@@ -23,6 +24,7 @@ private:
 	size_t m_score;
 	float m_getRandomPlatformSpeed();
 	void m_drawScore();
+	ParallaxBackground m_bg;
 
 public:
 	GameplayScene();
