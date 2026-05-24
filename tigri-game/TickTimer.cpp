@@ -7,7 +7,7 @@ bool TickTimer::tick()
 		return true;
 
 	m_ticksLeft--;
-	return false;
+	return state();
 }
 
 bool TickTimer::state()

@@ -1,3 +1,6 @@
+#include "Defines.h"
+#ifndef TEST_BUILD
+
 #include "SDLW.h"
 #include "memtrace.h"
 
@@ -58,3 +61,5 @@ SDLW_Texture::~SDLW_Texture()
 		}
 	}
 }
+
+#endif

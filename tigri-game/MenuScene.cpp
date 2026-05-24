@@ -1,15 +1,17 @@
 #include "MenuScene.h"
 #include "Game.h"
+#include "Debuggable.h"
 #include "memtrace.h"
 
 MenuScene::MenuScene(Gamemode& modeRef)
 	: Scene()
-	, modeRef(modeRef)
-	, m_titleTexture("src/title.png")
+	, Debuggable("MenuScene")
 	, m_music("src/gm04.mp3")
+	, m_titleTexture("src/title.png")
+	, m_bg("src/easy/bggradient.png", "src/easy/hillsfar.png", "src/easy/cloudsfar.png", "src/easy/hillsclose.png", "src/easy/cloudsclose.png")
 	, m_font("src/segoeuisl.ttf", 48)
 	, m_smallFont("src/segoeuisl.ttf", 24)
-	, m_bg("src/easy/bggradient.png", "src/easy/hillsfar.png", "src/easy/cloudsfar.png", "src/easy/hillsclose.png", "src/easy/cloudsclose.png")
+	, modeRef(modeRef)
 {
 	m_music.playMusic(-1);
 }
@@ -62,8 +64,10 @@ void MenuScene::draw()
 	case Gamemode::Easy:
 		gamemodeText = "Easy mode";
 		break;
-	case Gamemode::Medium:
-		gamemodeText = "Medium mode";
+	case Gamemode::Hard:
+		gamemodeText = "Hard mode";
+		break;
+	default:
 		break;
 	}
 	SystemUtils::renderTextWithShadow(m_smallFont, ("Press [SPACE] to select: " + gamemodeText).c_str(), whiteColor, instructionDstRegion, true);

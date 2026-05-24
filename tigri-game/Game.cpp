@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "SystemUtils.h"
 #include "EasyGameplayScene.h"
-#include "MediumGameplayScene.h"
+#include "HardGameplayScene.h"
 #include "memtrace.h"
 
 Controller Game::m_controller;
@@ -19,8 +19,10 @@ void Game::tick()
 			case Gamemode::Easy:
 				changeScene(new EasyGameplayScene(), Game::State::Gameplay);
 				break;
-			case Gamemode::Medium:
-				changeScene(new MediumGameplayScene(), Game::State::Gameplay);
+			case Gamemode::Hard:
+				changeScene(new HardGameplayScene(), Game::State::Gameplay);
+				break;
+			default:
 				break;
 			}
 			break;

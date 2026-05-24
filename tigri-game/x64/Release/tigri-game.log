@@ -5,50 +5,46 @@
   Entity.cpp
   FragilePlatform.cpp
   Game.cpp
-C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(23,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(29,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Game.cpp')
-      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(14,7):
+      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(17,7):
       see declaration of 'Game::State'
   
   GameplayScene.cpp
-C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(23,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(29,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'GameplayScene.cpp')
-      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(14,7):
+      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(17,7):
       see declaration of 'Game::State'
   
 C:\Users\soltb\source\bme\tigri-game\tigri-game\GameplayScene.cpp(92,12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  GameUtils.cpp
-  main.cpp
-C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(23,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
-  (compiling source file 'main.cpp')
-      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(14,7):
-      see declaration of 'Game::State'
-  
-C:\Users\soltb\source\bme\tigri-game\tigri-game\main.cpp(44,31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  MediumGameplayScene.cpp
-  memtrace.cpp
-C:\Users\soltb\source\bme\tigri-game\tigri-game\memtrace.cpp(405,50): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\soltb\source\bme\tigri-game\tigri-game\memtrace.cpp(406,35): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  HardGameplayScene.cpp
   MenuScene.cpp
-C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(23,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(29,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'MenuScene.cpp')
-      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(14,7):
+      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(17,7):
       see declaration of 'Game::State'
   
   ParallaxBackground.cpp
   Platform.cpp
   Player.cpp
-C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(23,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
+C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(29,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
   (compiling source file 'Player.cpp')
-      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(14,7):
+      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(17,7):
       see declaration of 'Game::State'
   
   SDLW.cpp
   SolidPlatform.cpp
   SystemUtils.cpp
   TickTimer.cpp
+  main.cpp
+C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(29,7): warning C4240: nonstandard extension used: access to 'Game::State' now defined to be 'public', previously it was defined to be 'private'
+  (compiling source file 'main.cpp')
+      C:\Users\soltb\source\bme\tigri-game\tigri-game\Game.h(17,7):
+      see declaration of 'Game::State'
+  
   Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 584 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  351 of 600 functions (58.5%) were compiled, the rest were copied from previous compilation.
+    98 functions were new in current compilation
+    55 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   tigri-game.vcxproj -> C:\Users\soltb\source\bme\tigri-game\x64\Release\tigri-game.exe

@@ -6,7 +6,6 @@
 #include "MenuScene.h"
 #include "Debuggable.h"
 #include "GameUtils.h"
-#include "memtrace.h"
 
 #ifdef TEST_BUILD
 #include "gtest_lite.h"
@@ -17,17 +16,19 @@
 #include "SDLW.h"
 #endif
 
+#include "memtrace.h"
+
 #ifndef TEST_BUILD
 extern SDLW_Renderer renderer;
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
 	{
 		std::cout << "Couldn't init SDL2.\n";
 		return -1;
 	}
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) 
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		std::cout << "SDL_mixer error: " << Mix_GetError() << std::endl;
 		return -1;
@@ -40,7 +41,7 @@ int main(int argc, char *argv[])
 	SDLW_Window window("Tigri: The Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_SHOWN);
 	renderer = SDLW_Renderer(window.getRawPtr(), -1, 0);
 	SDLW_Texture::setRenderer(renderer.getRawPtr());
-	
+
 	GameUtils::setRandomSeed(time(0));
 
 	Game game(Game::State::Menu);
@@ -70,10 +71,12 @@ int main()
 			: x(x)
 			, y(y)
 			, collBox(this->x, this->y, collBox)
-		{}
+		{
+		}
 	};
 	TestEntity t1(Box(0, 0, 10, 10), 0, 0);
 	TestEntity t2(Box(0, 0, 10, 10), 10, 10);
+
 	TEST(CollisionBox, checkCollision)
 	{
 		t1.x = 0;
@@ -105,7 +108,8 @@ int main()
 		EXPECT_EQ(false, CollisionBox::checkCollision(t1.collBox, t2.collBox));
 	} END
 
-	TEST(Game, Logic) {
+	TEST(Game, Logic) 
+	{
 		Game game(Game::State::Gameplay);
 		for (int i = 0; i < 1000; i++)
 		{
@@ -127,8 +131,56 @@ int main()
 	TEST(GameUtils, getRandomNum)
 	{
 		EXPECT_NO_THROW(GameUtils::getRandomNum(-1.0f, 2.0f));
-		EXPECT_THROW(GameUtils::getRandomNum(2.0f, 2.0f), std::invalid_argument);
-		EXPECT_THROW(GameUtils::getRandomNum(3.0f, 2.0f), std::invalid_argument);
+		EXPECT_THROW(GameUtils::getRandomNum(2.0f, 2.0f), std::invalid_argument&);
+		EXPECT_THROW(GameUtils::getRandomNum(3.0f, 2.0f), std::invalid_argument&);
+	} END
+
+	TEST(GameUtils, sign)
+	{
+		EXPECT_EQ(1, GameUtils::sign(42));
+		EXPECT_EQ(-1, GameUtils::sign(-42));
+		EXPECT_EQ(0, GameUtils::sign(0));
+		EXPECT_EQ(1, GameUtils::sign(3.14f));
+		EXPECT_EQ(-1, GameUtils::sign(-0.5f));
+	} END
+
+	TEST(TickTimer, Functionality)
+	{
+		TickTimer timer(2);
+		EXPECT_EQ(true, timer.state());
+		timer.restart();
+		EXPECT_EQ(false, timer.state());
+		EXPECT_EQ(false, timer.tick());
+		EXPECT_EQ(false, timer.state());
+		EXPECT_EQ(true, timer.tick());
+		EXPECT_EQ(true, timer.state());
+	} END
+
+	TEST(Debuggable, getCounter)
+	{
+		int startCount = Debuggable::getCounter();
+		{
+			Debuggable obj1("Test1");
+			EXPECT_EQ(startCount + 1, Debuggable::getCounter());
+			{
+				Debuggable obj2("Test2");
+				EXPECT_EQ(startCount + 2, Debuggable::getCounter());
+			}
+			EXPECT_EQ(startCount + 1, Debuggable::getCounter());
+		}
+		EXPECT_EQ(startCount, Debuggable::getCounter());
+	} END
+
+	TEST(Controller, InputHandling)
+	{
+		Controller ctrl;
+		ctrl.handleInput(Key::Right, true);
+		EXPECT_EQ(true, ctrl.isPressingRight());
+		ctrl.setPrevs();
+		EXPECT_EQ(true, ctrl.pressedRightLastTick());
+		ctrl.handleInput(Key::Right, false);
+		EXPECT_EQ(false, ctrl.isPressingRight());
+		EXPECT_EQ(true, ctrl.pressedRightLastTick());
 	} END
 }
 #endif

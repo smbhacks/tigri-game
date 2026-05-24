@@ -6,13 +6,24 @@
 #include "GameplayScene.h"
 #include "MenuScene.h"
 #include "MiscEnums.h"
-#include "memtrace.h"
 #include "EasyGameplayScene.h"
+#include "memtrace.h"
 
+/// <summary>
+/// A játék fő vezérlőosztálya, amely kezeli a jeleneteket (scene) és a fő játékciklust.
+/// </summary>
 class Game : private Debuggable
 {
-	enum State;
-	enum Mode;
+public:
+	/// <summary>
+	/// A játék lehetséges fő állapotai.
+	/// </summary>
+	enum State
+	{
+		Menu,
+		Gameplay
+	};
+
 private:
 	Scene* m_scene = new Scene();
 	static Controller m_controller;
@@ -20,11 +31,10 @@ private:
 	Gamemode m_gameMode;
 
 public:
-	enum State
-	{
-		Menu,
-		Gameplay
-	};
+	/// <summary>
+	/// Konstruktor, amely inicializálja a játékot a megadott kezdőállapottal.
+	/// </summary>
+	/// <param name="startingState">A játék indulási állapota (pl. Menu vagy Gameplay).</param>
 	Game(State startingState)
 		: Debuggable("Game")
 		, m_gameState(startingState)
@@ -40,13 +50,35 @@ public:
 			break;
 		}
 	}
+
+	/// <summary>
+	/// Destruktor, felszabadítja az aktuális jelenetet.
+	/// </summary>
 	~Game()
 	{
 		delete m_scene;
 	}
-	//void handleEvents();
+
+	/// <summary>
+	/// Képkockánként lefutó frissítési logika, amely továbbítja a hívást az aktuális jelenetnek, és kezeli a jelenetváltásokat.
+	/// </summary>
 	void tick();
+
+	/// <summary>
+	/// A teljes játékképernyő kirajzolása.
+	/// </summary>
 	void render();
+
+	/// <summary>
+	/// Lecseréli az aktuális jelenetet egy újra, és frissíti a játék állapotát.
+	/// </summary>
+	/// <param name="newScene">A memóriában lefoglalt új jelenet mutatója.</param>
+	/// <param name="state">A játék új állapota.</param>
 	void changeScene(Scene* newScene, Game::State state);
-	static Controller& getController() { return m_controller; }; // sorry this is probably stupid
+
+	/// <summary>
+	/// Visszaadja a globális kontroller referenciáját.
+	/// </summary>
+	/// <returns>A kontroller referenciája.</returns>
+	static Controller& getController() { return m_controller; };
 };

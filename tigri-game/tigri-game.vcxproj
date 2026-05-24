@@ -207,7 +207,7 @@
     <ClCompile Include="GameplayScene.cpp" />
     <ClCompile Include="GameUtils.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MediumGameplayScene.cpp" />
+    <ClCompile Include="HardGameplayScene.cpp" />
     <ClCompile Include="memtrace.cpp" />
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="ParallaxBackground.cpp" />
@@ -232,7 +232,7 @@
     <ClInclude Include="GameplayScene.h" />
     <ClInclude Include="GameUtils.h" />
     <ClInclude Include="gtest_lite.h" />
-    <ClInclude Include="MediumGameplayScene.h" />
+    <ClInclude Include="HardGameplayScene.h" />
     <ClInclude Include="memtrace.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="MiscEnums.h" />
@@ -244,6 +244,9 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SDLW.h" />
     <ClInclude Include="TickTimer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Release.zip" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

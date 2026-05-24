@@ -2,6 +2,7 @@
 #include "GameUtils.h"
 #include "FragilePlatform.h"
 #include "SolidPlatform.h"
+#include "memtrace.h"
 
 void EasyGameplayScene::draw()
 {

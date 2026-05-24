@@ -54,9 +54,6 @@
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="SDLW.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SystemUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,9 +79,12 @@
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="EasyGameplayScene.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="MediumGameplayScene.cpp">
+    <ClCompile Include="HardGameplayScene.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLW.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -159,10 +159,15 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="EasyGameplayScene.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="MediumGameplayScene.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="HardGameplayScene.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Release.zip">
+      <Filter>Header Files\Core</Filter>
+    </None>
   </ItemGroup>
 </Project>

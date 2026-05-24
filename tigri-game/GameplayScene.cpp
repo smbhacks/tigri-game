@@ -8,18 +8,18 @@
 GameplayScene::GameplayScene(const char* playerPngPath)
 	: Scene()
 	, Debuggable("GameplayScene")
-	, m_platformSpawnTimer(120)
+	, m_player(200.0f, -70.0f, Box(-75, -30, 150, 73), m_platforms, playerPngPath)
 	, m_platformBaseSpeedIncreaseTimer(1)
 	, m_platformBaseSpeed(-0.8f)
+	, m_platformSpawnTimer(120)
 	, m_youDiedMusic("src/you_died.mp3")
 	, m_smallFont("src/segoeuisl.ttf", 48)
 	, m_bigFont("src/segoeuisl.ttf", 130)
-	, m_player(200.0f, -70.0f, Box(-75, -30, 150, 73), m_platforms, playerPngPath)
 	, m_scoreTimer(60)
 	, m_score(0)
 	, m_gameOver(false)
-	, m_diedTextTimer(60*4)
-	, m_diedOptionTimer(60*2)
+	, m_diedTextTimer(60 * 4)
+	, m_diedOptionTimer(60 * 2)
 {
 	m_platforms.push_back(std::make_unique<SolidPlatform>(-0.6f, -0.2f, 200.0f, GameUtils::getRandomNum(500.0f, 650.0f)));
 	m_platforms.push_back(std::make_unique<SolidPlatform>(-1.3f, -0.1f, 700.0f, GameUtils::getRandomNum(400.0f, 650.0f)));

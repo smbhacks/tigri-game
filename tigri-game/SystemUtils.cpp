@@ -1,11 +1,12 @@
 #include "SystemUtils.h"
 #include "Defines.h"
-#include "memtrace.h"
 
 #ifndef TEST_BUILD
 #include "SDLW.h"
 #include <SDL.h>
 #endif
+
+#include "memtrace.h"
 
 #ifndef TEST_BUILD
 SDLW_Renderer renderer;
@@ -246,4 +247,3 @@ void SystemUtils::renderTextWithShadow(const Font& font, const char* string, con
 {
 }
 #endif
-
