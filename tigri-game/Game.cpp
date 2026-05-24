@@ -12,7 +12,7 @@ void Game::tick()
 
 void Game::render()
 {
-	SystemUtils::setRenderDrawColor(255, 255, 255, 255);
+	SystemUtils::setRenderDrawColor(220, 220, 255, 255);
 	SystemUtils::renderClear();
 	m_scene->draw();
 	SystemUtils::renderPresent();

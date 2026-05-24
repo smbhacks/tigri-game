@@ -13,16 +13,19 @@ class GameplayScene : public Scene, private Debuggable
 private:
 	Player m_player;
 	Camera m_camera;
-	float m_getRandomPlatformSpeed();
 	TickTimer m_platformBaseSpeedIncreaseTimer;
 	float m_platformBaseSpeed;
 	TickTimer m_platformSpawnTimer;
-    std::vector<std::unique_ptr<Platform>> m_platforms;
+	std::vector<std::unique_ptr<Platform>> m_platforms;
 	SystemUtils::Music m_bgMusic;
+	SystemUtils::Font m_scoreFont;
+	TickTimer m_scoreTimer;
+	size_t m_score;
+	float m_getRandomPlatformSpeed();
+	void m_drawScore();
 
 public:
 	GameplayScene();
 	void tick() override;
 	void draw() override;
 };
-

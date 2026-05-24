@@ -4,7 +4,7 @@
 
 #ifndef TEST_BUILD
 #include "SDLW.h"
-#include "SDL.h"
+#include <SDL.h>
 #endif
 
 #ifndef TEST_BUILD
@@ -38,6 +38,41 @@ SystemUtils::Music::Music(const char* path)
 SystemUtils::Music::~Music()
 {
 	delete reinterpret_cast<SDLW_Music*>(m_implementedInstance);
+}
+SystemUtils::Font::Font(const char* path, int size)
+	: Resource(path)
+{
+	m_implementedInstance = new SDLW_Font(path, size);
+}
+SystemUtils::Font::~Font()
+{
+	delete reinterpret_cast<SDLW_Font*>(m_implementedInstance);
+}
+SystemUtils::Text::Text(const Font& font, const char* string, const Color& color)
+	: Resource("")
+{
+	SDLW_Font* sdlFont = reinterpret_cast<SDLW_Font*>(font.getInstance());
+	SDLW_Surface textSurface(TTF_RenderText_Blended(sdlFont->getRawPtr(), string, SDL_Color(color.r, color.g, color.b, color.a)));
+	m_textWidth = textSurface.getRawPtr()->w;
+	m_textHeight = textSurface.getRawPtr()->h;
+	m_implementedInstance = SDL_CreateTextureFromSurface(renderer.getRawPtr(), textSurface.getRawPtr());
+}
+SystemUtils::Text::~Text()
+{
+	SDL_DestroyTexture(reinterpret_cast<SDL_Texture*>(m_implementedInstance));
+}
+void SystemUtils::Text::render(const Rect<int>& dstRect)
+{
+	SDL_Rect sdlDstRect = getSDLRect<SDL_Rect>(dstRect);
+	sdlDstRect.w = m_textWidth;
+	sdlDstRect.h = m_textHeight;
+	SDL_Rect srcRect = {
+		.x = 0,
+		.y = 0,
+		.w = m_textWidth,
+		.h = m_textHeight
+	};
+	SDL_RenderCopy(renderer.getRawPtr(), reinterpret_cast<SDL_Texture*>(m_implementedInstance), &srcRect, &sdlDstRect);
 }
 
 void SystemUtils::setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
@@ -144,6 +179,24 @@ SystemUtils::Music::Music(const char* path)
 {
 }
 
+SystemUtils::Text::Text(const char* string)
+	: Resource("")
+{
+}
+
+SystemUtils::Text::~Text()
+{
+}
+
+SystemUtils::Font::Font(const char* path)
+	: Resource(path)
+{
+}
+
+SystemUtils::Font::~Font()
+{
+}
+
 SystemUtils::Music::~Music()
 {
 }
@@ -179,4 +232,9 @@ void SystemUtils::handleEvents(Controller& controller)
 void SystemUtils::playMusic(const Music& music, int loops)
 {
 }
+
+void SystemUtils::Text::render(const Rect<int>& dstRect)
+{
+}
 #endif
+

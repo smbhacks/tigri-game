@@ -34,5 +34,6 @@ public:
 	{ }
 	void tick() override;
 	void draw(const Camera& camera) override;
+	bool isDashingDownwards() const { return m_dashingDownwards; }
 };
 

@@ -15,7 +15,7 @@ void Player::m_tickCollChecks()
 	for (auto& platform : m_platformsRef)
 	{
 		bool collided = CollisionBox::checkCollision(m_collBox, platform->getCollBox());
-		if (collided)
+		if (collided && platform->canBounce(*this))
 		{
 			m_ySpeed = m_dashingDownwards ? -dashedBounceSpeed : -normalBounceSpeed;
 			m_dashingDownwards = false;

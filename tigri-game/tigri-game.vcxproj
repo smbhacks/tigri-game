@@ -103,13 +103,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);MEMTRACE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\SDL2_mixer-2.8.2\include;C:\SDL2_image-2.8.8\include;C:\SDL2-2.32.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL2_ttf-2.24.0\include;C:\SDL2_mixer-2.8.2\include;C:\SDL2_image-2.8.8\include;C:\SDL2-2.32.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\SDL2_mixer-2.8.2\lib\x86;C:\SDL2_image-2.8.8\lib\x86;C:\SDL2-2.32.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL2_ttf-2.24.0\lib\x86;C:\SDL2_mixer-2.8.2\lib\x86;C:\SDL2_image-2.8.8\lib\x86;C:\SDL2-2.32.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|Win32'">
@@ -124,8 +124,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\SDL2_image-2.8.8\lib\x86;C:\SDL2-2.32.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL2_ttf-2.24.0\lib\x86;C:\SDL2_image-2.8.8\lib\x86;C:\SDL2-2.32.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,13 +137,13 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);MEMTRACE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\SDL2_mixer-2.8.2\include;C:\SDL2_image-2.8.8\include;C:\SDL2-2.32.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL2_ttf-2.24.0\include;C:\SDL2_mixer-2.8.2\include;C:\SDL2_image-2.8.8\include;C:\SDL2-2.32.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\SDL2_mixer-2.8.2\lib\x86;C:\SDL2_image-2.8.8\lib\x86;C:\SDL2-2.32.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL2_ttf-2.24.0\lib\x86;C:\SDL2_mixer-2.8.2\lib\x86;C:\SDL2_image-2.8.8\lib\x86;C:\SDL2-2.32.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -153,13 +153,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);MEMTRACE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\SDL2_mixer-2.8.2\include;C:\SDL2_image-2.8.8\include;C:\SDL2-2.32.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL2_mixer-2.8.2\include;C:\SDL2_image-2.8.8\include;C:\SDL2-2.32.8\include;C:\SDL2_ttf-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\SDL2_mixer-2.8.2\lib\x64;C:\SDL2_image-2.8.8\lib\x64;C:\SDL2-2.32.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL2_ttf-2.24.0\lib\x64;C:\SDL2_mixer-2.8.2\lib\x64;C:\SDL2_image-2.8.8\lib\x64;C:\SDL2-2.32.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
@@ -174,8 +174,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\SDL2_image-2.8.8\lib\x64;C:\SDL2-2.32.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL2_ttf-2.24.0\lib\x64;C:\SDL2_image-2.8.8\lib\x64;C:\SDL2-2.32.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -187,13 +187,13 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);MEMTRACE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\SDL2_mixer-2.8.2\include;C:\SDL2_image-2.8.8\include;C:\SDL2-2.32.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL2_ttf-2.24.0\include;C:\SDL2_mixer-2.8.2\include;C:\SDL2_image-2.8.8\include;C:\SDL2-2.32.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\SDL2_mixer-2.8.2\lib\x64;C:\SDL2_image-2.8.8\lib\x64;C:\SDL2-2.32.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL2_ttf-2.24.0\lib\x64;C:\SDL2_mixer-2.8.2\lib\x64;C:\SDL2_image-2.8.8\lib\x64;C:\SDL2-2.32.8\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -201,6 +201,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FragilePlatform.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameplayScene.cpp" />
     <ClCompile Include="GameUtils.cpp" />
@@ -209,6 +210,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDLW.cpp" />
+    <ClCompile Include="SolidPlatform.cpp" />
     <ClCompile Include="SystemUtils.cpp" />
     <ClCompile Include="TickTimer.cpp" />
   </ItemGroup>
@@ -220,6 +222,7 @@
     <ClInclude Include="Debuggable.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="FragilePlatform.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameplayScene.h" />
     <ClInclude Include="GameUtils.h" />
@@ -227,6 +230,7 @@
     <ClInclude Include="memtrace.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SolidPlatform.h" />
     <ClInclude Include="SystemUtils.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SDLW.h" />
