@@ -1,4 +1,5 @@
 #include "TickTimer.h"
+#include "memtrace.h"
 
 bool TickTimer::tick()
 {

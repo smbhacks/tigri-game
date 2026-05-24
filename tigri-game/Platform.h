@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Camera.h"
 #include "SystemUtils.h"
+#include "memtrace.h"
 
 class Player;
 

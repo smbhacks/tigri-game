@@ -1,6 +1,7 @@
 #pragma once
 #include "Box.h"
 #include "Debuggable.h"
+#include "memtrace.h"
 
 class CollisionBox : private Debuggable
 {

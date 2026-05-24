@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Defines.h"
+#include "memtrace.h"
 
 class Debuggable
 {

@@ -1,9 +1,9 @@
 #include "GameplayScene.h"
-#include "memtrace.h"
 #include "GameUtils.h"
 #include "SolidPlatform.h"
 #include "FragilePlatform.h"
 #include "Game.h"
+#include "memtrace.h"
 
 GameplayScene::GameplayScene()
 	: Scene()

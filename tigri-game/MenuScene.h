@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "SystemUtils.h"
 #include "ParallaxBackground.h"
+#include "memtrace.h"
 
 class MenuScene : public Scene, private Debuggable
 {

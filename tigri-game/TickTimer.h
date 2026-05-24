@@ -1,5 +1,6 @@
 #pragma once
 #include "Debuggable.h"
+#include "memtrace.h"
 
 class TickTimer : private Debuggable
 {

@@ -8,6 +8,7 @@
 #include <SDL_ttf.h>
 #include "Debuggable.h"
 #include "GameUtils.h"
+#include "memtrace.h"
 
 class SDLW_Renderer : private Debuggable
 {

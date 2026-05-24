@@ -5,6 +5,7 @@
 #include "Platform.h"
 #include "Debuggable.h"
 #include "SystemUtils.h"
+#include "memtrace.h"
 
 class Player : public Entity, private Debuggable
 {

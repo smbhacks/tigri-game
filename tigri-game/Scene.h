@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Debuggable.h"
 #include "Controller.h"
+#include "memtrace.h"
 
 class Scene
 {

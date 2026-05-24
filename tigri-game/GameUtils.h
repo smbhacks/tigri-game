@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdlib>
 #include <stdexcept>
+#include "memtrace.h"
 
 template<typename T> 
 static void assertInterval(const T& inclusiveLower, const T& exclusiveUpper)

@@ -1,6 +1,7 @@
 #pragma once
 #include "Camera.h"
 #include "SystemUtils.h"
+#include "memtrace.h"
 
 class ParallaxBackground
 {

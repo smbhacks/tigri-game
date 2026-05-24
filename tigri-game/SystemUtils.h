@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
 #include "Controller.h"
+#include "memtrace.h"
 
 // The core uses these so we can seperate the SDL and test builds easily
 

@@ -1,5 +1,6 @@
 #include "SolidPlatform.h"
 #include "Player.h"
+#include "memtrace.h"
 
 void SolidPlatform::tick()
 {

@@ -1,5 +1,6 @@
 #include "ParallaxBackground.h"
 #include "GameUtils.h"
+#include "memtrace.h"
 
 void ParallaxBackground::m_drawLayer(const SystemUtils::Texture& texture, const Camera& camera, float speedMultiplier)
 {

@@ -8,6 +8,7 @@
 #include "Platform.h"
 #include "TickTimer.h"
 #include "ParallaxBackground.h"
+#include "memtrace.h"
 
 class GameplayScene : public Scene, private Debuggable
 {

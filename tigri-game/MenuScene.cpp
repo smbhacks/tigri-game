@@ -1,5 +1,6 @@
 #include "MenuScene.h"
 #include "Game.h"
+#include "memtrace.h"
 
 MenuScene::MenuScene()
 	: Scene()

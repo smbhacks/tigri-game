@@ -5,6 +5,7 @@
 #include "ParallaxBackground.h"
 #include "GameplayScene.h"
 #include "MenuScene.h"
+#include "memtrace.h"
 
 class Game : private Debuggable
 {

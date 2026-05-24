@@ -1,5 +1,6 @@
 #include "FragilePlatform.h"
 #include "Player.h"
+#include "memtrace.h"
 
 void FragilePlatform::tick()
 {
