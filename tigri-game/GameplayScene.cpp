@@ -23,14 +23,14 @@ GameplayScene::GameplayScene()
 
 float GameplayScene::m_getRandomPlatformSpeed()
 {
-	static const float minBaseSpeed = -12.0f; // harder difficulty: -40.0f
+	static const float minBaseSpeed = -13.0f; // harder difficulty: -40.0f
 	static const float randomnessIntervalSize = 2.0f;
 	TickTimer& timer = m_platformBaseSpeedIncreaseTimer; // alias for this long ahh name
 	if (m_platformBaseSpeed > minBaseSpeed && timer.state())
 	{
 		m_platformBaseSpeed -= 0.4f;
 		GameUtils::clamp(m_platformBaseSpeed, minBaseSpeed, std::numeric_limits<float>::max());
-		size_t newRestartVal = timer.getRestartVal() + 90;
+		size_t newRestartVal = timer.getRestartVal() + 30;
 		timer.setRestartVal(newRestartVal);
 		timer.restart();
 	}
@@ -99,12 +99,11 @@ void GameplayScene::m_drawScore()
 
 void GameplayScene::draw()
 {
+	m_bg.draw(m_camera);
 	for (auto& platform : m_platforms)
 	{
 		platform->draw(m_camera);
-		platform->drawCollBox(m_camera);
 	}
 	m_player.draw(m_camera);
-	m_player.drawCollBox(m_camera);
 	m_drawScore();
 }

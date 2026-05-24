@@ -207,6 +207,7 @@
     <ClCompile Include="GameUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memtrace.cpp" />
+    <ClCompile Include="ParallaxBackground.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDLW.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="GameUtils.h" />
     <ClInclude Include="gtest_lite.h" />
     <ClInclude Include="memtrace.h" />
+    <ClInclude Include="ParallaxBackground.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SolidPlatform.h" />
