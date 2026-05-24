@@ -12,14 +12,13 @@
 
 class GameplayScene : public Scene, private Debuggable
 {
-private:
+protected:
 	Player m_player;
 	Camera m_camera;
 	TickTimer m_platformBaseSpeedIncreaseTimer;
 	float m_platformBaseSpeed;
 	TickTimer m_platformSpawnTimer;
 	std::vector<std::unique_ptr<Platform>> m_platforms;
-	SystemUtils::Music m_bgMusic;
 	SystemUtils::Music m_youDiedMusic;
 	SystemUtils::Font m_smallFont;
 	SystemUtils::Font m_bigFont;
@@ -27,7 +26,6 @@ private:
 	size_t m_score;
 	float m_getRandomPlatformSpeed();
 	void m_drawScore();
-	ParallaxBackground m_bg;
 	bool m_gameOver;
 	TickTimer m_diedTextTimer;
 	void m_tickGameOver();
@@ -36,7 +34,7 @@ private:
 	TickTimer m_diedOptionTimer;
 
 public:
-	GameplayScene(const char* musicPath);
+	GameplayScene(const char* playerPngPath);
 	void tick() override;
-	void draw() override;
+	virtual void draw() = 0;
 };

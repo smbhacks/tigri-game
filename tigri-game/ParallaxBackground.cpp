@@ -42,8 +42,8 @@ void ParallaxBackground::m_drawLayer(const SystemUtils::Texture& texture, const 
 void ParallaxBackground::draw(const Camera& camera)
 {
 	m_drawLayer(m_bgGradient, camera, 0.0f);
-	m_drawLayer(m_cloudsFarTexture, camera, 1.0f);
-	m_drawLayer(m_hillsFarTexture, camera, 0.5f);
-	m_drawLayer(m_hillsCloseTexture, camera, 1.5f);
-	m_drawLayer(m_cloudsCloseTexture, camera, 2.0f);
+	m_drawLayer(m_layer1, camera, 0.5f);
+	m_drawLayer(m_layer2, camera, 1.0f);
+	m_drawLayer(m_layer3, camera, 1.5f);
+	m_drawLayer(m_layer4, camera, 2.0f);
 }

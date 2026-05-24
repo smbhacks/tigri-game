@@ -28,11 +28,11 @@ private:
 	bool m_died = false;
 
 public:
-	Player(float x, float y, Box collBox, std::vector<std::unique_ptr<Platform>>& platformsRef)
+	Player(float x, float y, Box collBox, std::vector<std::unique_ptr<Platform>>& platformsRef, const char* pngPath)
 		: Entity(collBox, x, y)
 		, Debuggable("Player")
 		, m_platformsRef(platformsRef)
-		, m_texture("src/player.png")
+		, m_texture(pngPath)
 	{ }
 	void tick() override;
 	void draw(const Camera& camera) override;

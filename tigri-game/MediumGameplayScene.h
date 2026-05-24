@@ -5,8 +5,8 @@ class MediumGameplayScene : public GameplayScene
 {
 public:
 	MediumGameplayScene()
-		: GameplayScene("src/i_know_what_you_did_last_stage.mp3")
-	{
-	}
+		: GameplayScene("src/medium/player.png")
+	{ }
+	void draw() override;
 };
 

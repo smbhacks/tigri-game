@@ -9,6 +9,7 @@ MenuScene::MenuScene(Gamemode& modeRef)
 	, m_music("src/gm04.mp3")
 	, m_font("src/segoeuisl.ttf", 48)
 	, m_smallFont("src/segoeuisl.ttf", 24)
+	, m_bg("src/easy/bggradient.png", "src/easy/hillsfar.png", "src/easy/cloudsfar.png", "src/easy/hillsclose.png", "src/easy/cloudsclose.png")
 {
 	m_music.playMusic(-1);
 }
