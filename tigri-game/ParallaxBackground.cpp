@@ -5,7 +5,7 @@ void ParallaxBackground::m_drawLayer(const SystemUtils::Texture& texture, const 
 {
 	int startX = int(camera.getX() * speedMultiplier) % 3000;
 	int widthNoWrap = 3000 - startX;
-	GameUtils::clamp(widthNoWrap, 1, 1280);
+	widthNoWrap = GameUtils::clamp(widthNoWrap, 1, 1280);
 	int widthAfterWrap = 1280 - widthNoWrap;
 	SystemUtils::Rect<int> drawRegionNoWrap = {
 		.x = startX,
