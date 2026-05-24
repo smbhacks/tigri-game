@@ -24,12 +24,12 @@ protected:
 	SystemUtils::Font m_bigFont;
 	TickTimer m_scoreTimer;
 	size_t m_score;
-	float m_getRandomPlatformSpeed();
+	virtual float m_getRandomPlatformSpeed() = 0;
 	void m_drawScore();
 	bool m_gameOver;
 	TickTimer m_diedTextTimer;
 	void m_tickGameOver();
-	void m_spawnPlatforms();
+	virtual void m_spawnPlatforms() = 0;
 	void m_drawGameOver();
 	TickTimer m_diedOptionTimer;
 

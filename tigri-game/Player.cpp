@@ -10,6 +10,9 @@ const static int fallingAnimFrameTime = 6;
 
 void Player::m_tickCollChecks()
 {
+	if (m_ySpeed < 0)
+		return;
+
 	const float normalBounceSpeed = 14.0f;
 	const float dashedBounceSpeed = 16.0f;
 	for (auto& platform : m_platformsRef)

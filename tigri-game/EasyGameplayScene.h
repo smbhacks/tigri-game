@@ -6,6 +6,8 @@ class EasyGameplayScene : public GameplayScene
 private:
 	ParallaxBackground m_bg;
 	SystemUtils::Music m_bgMusic;
+	void m_spawnPlatforms() override;
+	float m_getRandomPlatformSpeed() override;
 
 public:
 	EasyGameplayScene()
