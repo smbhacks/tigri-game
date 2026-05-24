@@ -183,8 +183,6 @@ void SystemUtils::renderTextWithShadow(const Font& font, const char* string, con
 #endif
 
 #ifdef TEST_BUILD
-typedef char dummyType;
-
 SystemUtils::Texture::Texture(const char* path)
 	: Resource(path)
 {
@@ -192,70 +190,54 @@ SystemUtils::Texture::Texture(const char* path)
 SystemUtils::Texture::~Texture()
 {
 }
-
+void SystemUtils::Music::playMusic(int loops)
+{
+}
 SystemUtils::Music::Music(const char* path)
 	: Resource(path)
 {
 }
-
-SystemUtils::Text::Text(const char* string)
-	: Resource("")
-{
-}
-
-SystemUtils::Text::~Text()
-{
-}
-
-SystemUtils::Font::Font(const char* path)
-	: Resource(path)
-{
-}
-
-SystemUtils::Font::~Font()
-{
-}
-
 SystemUtils::Music::~Music()
 {
 }
-
-void SystemUtils::setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+SystemUtils::Font::Font(const char* path, int size)
+	: Resource(path)
 {
 }
-
-void SystemUtils::renderDrawRectF(const Rect<float>& rect)
+SystemUtils::Font::~Font()
 {
 }
-
-void SystemUtils::renderFillRectF(const Rect<float>& rect)
+SystemUtils::Text::Text(const Font& font, const char* string, const Color& color)
+	: Resource("")
 {
 }
-
-void SystemUtils::renderCopy(const Texture& texture, Rect<int>& srcRect, Rect<int>& dstRect)
+SystemUtils::Text::~Text()
 {
 }
-
-void SystemUtils::renderClear()
-{
-}
-
-void SystemUtils::renderPresent()
-{
-}
-
-void SystemUtils::handleEvents(Controller& controller)
-{
-}
-
-void SystemUtils::Music::playMusic(int loops)
-{
-}
-
 void SystemUtils::Text::render(const Rect<int>& dstRect, int xOffset, int yOffset)
 {
 }
-
+void SystemUtils::setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+}
+void SystemUtils::renderDrawRectF(const Rect<float>& rect)
+{
+}
+void SystemUtils::renderFillRectF(const Rect<float>& rect)
+{
+}
+void SystemUtils::renderCopy(const Texture& texture, Rect<int>& srcRect, Rect<int>& dstRect)
+{
+}
+void SystemUtils::renderClear()
+{
+}
+void SystemUtils::renderPresent()
+{
+}
+void SystemUtils::handleEvents(Controller& controller)
+{
+}
 void SystemUtils::renderTextWithShadow(const Font& font, const char* string, const Color& color, Rect<int> dstRect, bool centerX)
 {
 }
