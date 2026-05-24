@@ -7,6 +7,7 @@
 #include "MenuScene.h"
 #include "MiscEnums.h"
 #include "memtrace.h"
+#include "EasyGameplayScene.h"
 
 class Game : private Debuggable
 {
@@ -35,7 +36,7 @@ public:
 			changeScene(new MenuScene(m_gameMode), m_gameState);
 			break;
 		case Gameplay:
-			changeScene(new GameplayScene(), m_gameState);
+			changeScene(new EasyGameplayScene(), m_gameState);
 			break;
 		}
 	}

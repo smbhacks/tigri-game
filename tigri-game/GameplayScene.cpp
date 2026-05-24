@@ -5,13 +5,13 @@
 #include "Game.h"
 #include "memtrace.h"
 
-GameplayScene::GameplayScene()
+GameplayScene::GameplayScene(const char* musicPath)
 	: Scene()
 	, Debuggable("GameplayScene")
 	, m_platformSpawnTimer(120)
 	, m_platformBaseSpeedIncreaseTimer(1)
 	, m_platformBaseSpeed(-0.8f)
-	, m_bgMusic("src/be_higher.mp3")
+	, m_bgMusic(musicPath)
 	, m_youDiedMusic("src/you_died.mp3")
 	, m_smallFont("src/segoeuisl.ttf", 48)
 	, m_bigFont("src/segoeuisl.ttf", 130)

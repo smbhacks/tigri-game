@@ -36,7 +36,7 @@ private:
 	TickTimer m_diedOptionTimer;
 
 public:
-	GameplayScene();
+	GameplayScene(const char* musicPath);
 	void tick() override;
 	void draw() override;
 };
