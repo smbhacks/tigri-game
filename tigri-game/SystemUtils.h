@@ -10,6 +10,19 @@ private:
 	static inline bool shutdownRequestedFlag = false;
 
 public:
+	template<typename T>
+	struct Rect {
+		T x;
+		T y;
+		T w;
+		T h;
+	};
+	struct Color {
+		uint8_t r;
+		uint8_t g;
+		uint8_t b;
+		uint8_t a;
+	};
 	class Resource
 	{
 	protected:
@@ -34,12 +47,21 @@ public:
 		Music(const char* path);
 		~Music();
 	};
-	template<typename T>
-	struct Rect {
-		T x;
-		T y;
-		T w;
-		T h;
+	class Font : public Resource
+	{
+	public:
+		Font(const char* path, int size);
+		~Font();
+	};
+	class Text : public Resource
+	{
+	private:
+		int m_textWidth;
+		int m_textHeight;
+	public:
+		Text(const Font& font, const char* string, const Color& color);
+		~Text();
+		void render(const Rect<int>& dstRect);
 	};
 	static bool isShutdownRequested() { return shutdownRequestedFlag; }
 	static void setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);

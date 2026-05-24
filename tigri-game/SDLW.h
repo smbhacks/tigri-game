@@ -2,9 +2,10 @@
 #include <iostream>
 #include <vector>
 #include <cstring>
-#include "SDL.h"
-#include "SDL_mixer.h"
-#include "SDL_image.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 #include "Debuggable.h"
 #include "GameUtils.h"
 
@@ -105,4 +106,35 @@ public:
 		Mix_FreeMusic(m_music);
 	}
 	Mix_Music* getRawPtr() const { return m_music; }
+};
+
+class SDLW_Font : private Debuggable
+{
+private:
+	TTF_Font* m_font;
+public:
+	SDLW_Font(const char* path, int size)
+		: Debuggable("SDLW_Font")
+		, m_font(TTF_OpenFont(path, size))
+	{ }
+	~SDLW_Font()
+	{
+//		TTF_CloseFont(m_font); // Todo: figure out why this throws
+	}
+	TTF_Font* getRawPtr() const { return m_font; }
+};
+
+class SDLW_Surface : private Debuggable
+{
+private:
+	SDL_Surface* m_surface;
+public:
+	SDLW_Surface(SDL_Surface* surface)
+		: m_surface(surface)
+	{ }
+	~SDLW_Surface()
+	{
+		SDL_FreeSurface(m_surface);
+	}
+	SDL_Surface* getRawPtr() const { return m_surface; }
 };

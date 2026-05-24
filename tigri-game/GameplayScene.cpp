@@ -11,7 +11,10 @@ GameplayScene::GameplayScene()
 	, m_platformBaseSpeedIncreaseTimer(1)
 	, m_platformBaseSpeed(-0.8f)
 	, m_bgMusic("src/be_higher.mp3")
+	, m_scoreFont("src/segoeuisl.ttf", 48)
 	, m_player(200.0f, -70.0f, Box(-75, -30, 150, 73), m_platforms)
+	, m_scoreTimer(60)
+	, m_score(0)
 {
 	m_platforms.push_back(std::make_unique<SolidPlatform>(-0.6f, -0.2f, 200.0f, GameUtils::getRandomNum(500.0f, 650.0f)));
 	m_platforms.push_back(std::make_unique<SolidPlatform>(-1.3f, -0.1f, 700.0f, GameUtils::getRandomNum(400.0f, 650.0f)));
@@ -75,6 +78,25 @@ void GameplayScene::tick()
 	m_player.tick();
 }
 
+void GameplayScene::m_drawScore()
+{
+	const static int shadowOffset = 2;
+	SystemUtils::Rect<int> scoreDstRect = {
+		.x = 32 + shadowOffset,
+		.y = 10 + shadowOffset
+	};
+	if (m_scoreTimer.tick())
+	{
+		m_score++;
+		m_scoreTimer.restart();
+	}
+	std::string scoreString = "Score: " + std::to_string(m_score);
+	SystemUtils::Text(m_scoreFont, scoreString.c_str(), SystemUtils::Color(0, 0, 0, 128)).render(scoreDstRect);
+	scoreDstRect.x -= shadowOffset;
+	scoreDstRect.y -= shadowOffset;
+	SystemUtils::Text(m_scoreFont, scoreString.c_str(), SystemUtils::Color(255, 255, 255, 255)).render(scoreDstRect);
+}
+
 void GameplayScene::draw()
 {
 	for (auto& platform : m_platforms)
@@ -84,4 +106,5 @@ void GameplayScene::draw()
 	}
 	m_player.draw(m_camera);
 	m_player.drawCollBox(m_camera);
+	m_drawScore();
 }
