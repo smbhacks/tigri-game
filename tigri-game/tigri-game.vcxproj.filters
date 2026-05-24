@@ -78,6 +78,9 @@
     <ClCompile Include="ParallaxBackground.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SDLW.h">
@@ -141,6 +144,9 @@
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="ParallaxBackground.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>

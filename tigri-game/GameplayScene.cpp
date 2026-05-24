@@ -91,10 +91,7 @@ void GameplayScene::m_drawScore()
 		m_scoreTimer.restart();
 	}
 	std::string scoreString = "Score: " + std::to_string(m_score);
-	SystemUtils::Text(m_scoreFont, scoreString.c_str(), SystemUtils::Color(0, 0, 0, 128)).render(scoreDstRect);
-	scoreDstRect.x -= shadowOffset;
-	scoreDstRect.y -= shadowOffset;
-	SystemUtils::Text(m_scoreFont, scoreString.c_str(), SystemUtils::Color(255, 255, 255, 255)).render(scoreDstRect);
+	SystemUtils::renderTextWithShadow(m_scoreFont, scoreString.c_str(), SystemUtils::Color(255, 255, 255, 255), scoreDstRect);
 }
 
 void GameplayScene::draw()

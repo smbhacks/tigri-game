@@ -5,6 +5,8 @@
 
 class Scene
 {
+protected:
+	bool m_shutdownSceneFlag = false;
 public:
 	virtual ~Scene() {};
 	virtual void tick()
@@ -15,4 +17,5 @@ public:
 	{
 		std::cout << "Scene::draw() -> No scene to draw yet!\n";
 	}
+	bool isSceneReadyToShutdown() const { return m_shutdownSceneFlag; }
 };

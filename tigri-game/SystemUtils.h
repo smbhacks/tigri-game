@@ -61,7 +61,9 @@ public:
 	public:
 		Text(const Font& font, const char* string, const Color& color);
 		~Text();
-		void render(const Rect<int>& dstRect);
+		void render(const Rect<int>& dstRect, int xOffset = 0, int yOffset = 0);
+		int getWidth() const { return m_textWidth; }
+		int getHeight() const { return m_textHeight; }
 	};
 	static bool isShutdownRequested() { return shutdownRequestedFlag; }
 	static void setRenderDrawColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
@@ -72,4 +74,5 @@ public:
 	static void renderPresent();
 	static void handleEvents(Controller& controller);
 	static void playMusic(const Music& music, int loops);
+	static void renderTextWithShadow(const Font& font, const char* string, const Color& color, Rect<int> dstRect, bool centerX = false);
 };

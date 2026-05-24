@@ -3,6 +3,7 @@
 #include "Defines.h"
 #include "Game.h"
 #include "GameplayScene.h"
+#include "MenuScene.h"
 #include "Debuggable.h"
 #include "GameUtils.h"
 #include "memtrace.h"
@@ -42,8 +43,7 @@ int main(int argc, char *argv[])
 	
 	GameUtils::setRandomSeed(time(0));
 
-	Game game;
-	game.changeScene(new GameplayScene());
+	Game game(Game::State::Menu);
 	while (!SystemUtils::isShutdownRequested())
 	{
 		SystemUtils::handleEvents(game.getController());
@@ -106,8 +106,7 @@ int main()
 	} END
 
 	TEST(Game, Logic) {
-		Game game;
-		game.changeScene(new GameplayScene());
+		Game game(Game::State::Gameplay);
 		for (int i = 0; i < 1000; i++)
 		{
 			EXPECT_NO_THROW(game.tick());

@@ -61,11 +61,13 @@ SystemUtils::Text::~Text()
 {
 	SDL_DestroyTexture(reinterpret_cast<SDL_Texture*>(m_implementedInstance));
 }
-void SystemUtils::Text::render(const Rect<int>& dstRect)
+void SystemUtils::Text::render(const Rect<int>& dstRect, int xOffset, int yOffset)
 {
 	SDL_Rect sdlDstRect = getSDLRect<SDL_Rect>(dstRect);
 	sdlDstRect.w = m_textWidth;
 	sdlDstRect.h = m_textHeight;
+	sdlDstRect.x += xOffset;
+	sdlDstRect.y += yOffset;
 	SDL_Rect srcRect = {
 		.x = 0,
 		.y = 0,
@@ -116,6 +118,7 @@ static void handleInput(const SDL_Event& event, Controller& controller)
 	const SDL_Keycode rightKey = SDLK_RIGHT;
 	const SDL_Keycode downKey = SDLK_DOWN;
 	const SDL_KeyCode upKey = SDLK_UP;
+	const SDL_KeyCode confirmKey = SDLK_RETURN;
 	if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
 	{
 		bool isKeyDownEvent = (event.type == SDL_KEYDOWN);
@@ -132,6 +135,9 @@ static void handleInput(const SDL_Event& event, Controller& controller)
 			break;
 		case upKey:
 			controller.handleInput(Key::Up, isKeyDownEvent);
+			break;
+		case confirmKey:
+			controller.handleInput(Key::Confirm, isKeyDownEvent);
 			break;
 		}
 	}
@@ -159,6 +165,19 @@ void SystemUtils::playMusic(const Music& music, int loops)
 {
 	Mix_Music* musicPtr = reinterpret_cast<SDLW_Music*>(music.getInstance())->getRawPtr();
 	Mix_PlayMusic(musicPtr, loops);
+}
+
+void SystemUtils::renderTextWithShadow(const Font& font, const char* string, const Color& color, Rect<int> dstRect, bool centerX)
+{
+	static const int shadowOffset = 2;
+	Text shadowText(font, string, SystemUtils::Color(0, 0, 0, 128));
+	Text mainText(font, string, color);
+	if (centerX)
+	{
+		dstRect.x = (1280 - mainText.getWidth()) / 2;
+	}
+	shadowText.render(dstRect, shadowOffset, shadowOffset);
+	mainText.render(dstRect);
 }
 
 #endif
@@ -233,7 +252,11 @@ void SystemUtils::playMusic(const Music& music, int loops)
 {
 }
 
-void SystemUtils::Text::render(const Rect<int>& dstRect)
+void SystemUtils::Text::render(const Rect<int>& dstRect, int xOffset, int yOffset)
+{
+}
+
+void SystemUtils::renderTextWithShadow(const Font& font, const char* string, const Color& color, Rect<int> dstRect, bool centerX)
 {
 }
 #endif
