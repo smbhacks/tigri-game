@@ -103,9 +103,7 @@ void GameplayScene::draw()
 	for (auto& platform : m_platforms)
 	{
 		platform->draw(m_camera);
-		platform->drawCollBox(m_camera);
 	}
 	m_player.draw(m_camera);
-	m_player.drawCollBox(m_camera);
 	m_drawScore();
 }
