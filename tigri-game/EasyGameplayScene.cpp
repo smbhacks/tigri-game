@@ -37,7 +37,7 @@ void EasyGameplayScene::m_spawnPlatforms()
 		{
 			m_platforms.push_back(std::make_unique<SolidPlatform>(xSpeed, ySpeed, xPos, yPos));
 		}
-		size_t maxTimeToWait = size_t(700.0f / abs(xSpeed));
+		size_t maxTimeToWait = GameUtils::clamp(size_t(700.0f / abs(xSpeed)), size_t(11), std::numeric_limits<size_t>::max());
 		m_platformSpawnTimer.setRestartVal(GameUtils::getRandomNum<size_t>(10, maxTimeToWait));
 		m_platformSpawnTimer.restart();
 	}
